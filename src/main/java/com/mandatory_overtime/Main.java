@@ -9,18 +9,30 @@ import java.io.Reader;
 public class Main {
 
   public static void main(String[] args) {
-   try {
-     Reader input = new InputStreamReader(System.in);
-     BufferedReader reader = new BufferedReader(input);
-     UserView view = new UserView();
-     System.out.println("What is your name");
-     String name = reader.readLine().trim();
-     System.out.println(view.startUpInfo(name));
-   }catch (IOException e){
-     throw new RuntimeException(e);
-   }
 
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    ) {
+//      Instantiate UserView
+      UserView userView = new UserView();
 
+//      print startup title info
+      System.out.println(userView.startUpTitle());
+
+//      print game info and user name
+      System.out.println("What is your name");
+      String name = reader.readLine().trim();
+      System.out.println(userView.startUpInfo(name));
+
+//    print help instructions
+      do {
+        if (reader.readLine().trim().equals("help")) {
+          System.out.println(userView.showHelp());
+        } else {
+          break;
+        }
+      } while (true);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
-
 }
