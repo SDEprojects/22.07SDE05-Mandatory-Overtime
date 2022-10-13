@@ -1,12 +1,19 @@
 package com.mandatory_overtime.view;
 
+import static org.junit.Assert.*;
+
 import java.io.PrintStream;
+import org.junit.Test;
 
-public class UserView {
+public class UserViewTest {
 
-  public String startUpInfo(String name){
+  @Test
+  public void startUpInfo_nameDisplaysWithInfo() {
+    UserView view = new UserView();
+    String name = "carl";
 
-    return "Hello " + name + ", \n"
+
+    String expected = "Hello carl, \n"
         + "You are a developer for Amazon and it's Halloween night\n"
         + "You have had a long week at the office, but you are diving head first into the weekend\n"
         + "because there's a rooftop Halloween Party tonight!\n\n"
@@ -17,15 +24,9 @@ public class UserView {
         + "Finish your work and escape the building with your things\n"
         + "before your manager, Scott, finds you and you miss the party tonight.\n";
 
+    String actual = view.startUpInfo(name);
+
+    assertEquals(expected, actual);
 
   }
-
-  public String startUpTitle(){
-    return null;
-  }
-
-  public String showHelp(){
-    return null;
-  }
-
 }
