@@ -10,12 +10,87 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-#build output directories
-target/
-build/
-out/
-bin/
+### IntelliJ/Android Studio ###
 
-#local metadata
-.idea/
+# - metadata
+/.idea/
 *.iml
+
+# - temporary files
+/captures/
+
+# - build output
+/out/
+
+
+### Eclipse ###
+
+# - metadata
+/.settings/
+/.metadata/
+.project
+.classpath
+
+## - build output
+/bin/
+
+
+### NetBeans ###
+
+# - metadata
+/nbproject/
+/.nb-gradle/
+
+# - build output
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+
+
+### VS Code ###
+
+# - metadata
+.vscode/
+
+
+### Gradle ###
+
+# - temporary files
+/.gradle/
+
+# - local properties
+local.properties
+
+
+### Maven ###
+
+# - developer info
+HELP.md
+
+# - build output
+/target/
+
+
+### OS X ###
+
+# - metadata
+.DS_Store
+
+
+### Embedded database ###
+
+# If your application uses an embedded database (e.g. Apache Derby, H2, HSQLDB),
+# exclude the directory where its data files are located. For example:
+# /db/
+
+# Exclude any database log files. For example:
+# derby.log
+
+
+### Floobits ###
+
+# If you're using the IntelliJ Floobits plugin, exclude its metadata.
+# .floo*
+
+
