@@ -54,14 +54,10 @@ public class JSONProcessor {
         JSONObject location = (JSONObject) results.get(i);
         //returns key SET of object
         Set locationName = location.keySet();
-        String[] locationSpecific = (String[]) locationName.toArray();
+        Object[] locationSpecific = locationName.toArray();
 
         System.out.println(locationSpecific[0]);
 
-
-//        JSONObject locationInfo = (JSONObject) location.get(locationName);
-//        System.out.println(locationInfo);
-//        System.out.println(key.get("directions"));
       }
 
     }
