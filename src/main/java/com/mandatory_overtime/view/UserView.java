@@ -39,4 +39,9 @@ public class UserView {
     return help;
   }
 
+  public String incorrectInput(){
+    String incorrect = "\nWe don't recognize this command. Please review the game commands for valid inputs.\n";
+    return incorrect;
+  }
+
 }

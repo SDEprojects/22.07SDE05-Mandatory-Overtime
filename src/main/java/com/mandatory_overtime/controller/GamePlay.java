@@ -53,7 +53,7 @@ public class GamePlay {
         } else if (verb.equals("new")){
             newGame();
         }else {
-          System.out.println("Wrong, Try again!");
+          System.out.println(userView.incorrectInput() + userView.showHelp());
         }
       } while (true);
 
