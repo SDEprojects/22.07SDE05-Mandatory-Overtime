@@ -9,7 +9,9 @@
           "4",
           "5"
         ]
-      },
+      }
+    },
+    {
       "5": {
         "RoomName": "L5-Office",
         "directions": [
@@ -19,7 +21,9 @@
         ],
         "items": "laptop",
         "NPC": null
-      },
+      }
+    },
+    {
       "desk": {
         "RoomName": "desk",
         "directions": [
@@ -27,7 +31,9 @@
         ],
         "items": "wallet",
         "NPC": null
-      },
+      }
+    },
+    {
       "conference room": {
         "RoomName": "conference room",
         "directions": [

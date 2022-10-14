@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/22.07SDE05-Mandatory-Overtime.iml" filepath="$PROJECT_DIR$/.idea/22.07SDE05-Mandatory-Overtime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mandatory-Overtime.iml" filepath="$PROJECT_DIR$/Mandatory-Overtime.iml" />
     </modules>
   </component>
 </project>
