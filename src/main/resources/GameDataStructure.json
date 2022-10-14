@@ -1,0 +1,43 @@
+{
+  "Rooms": [
+    {
+      "elevator": {
+        "directions": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "5": {
+        "RoomName": "L5-Office",
+        "directions": [
+          "elevator",
+          "conference room",
+          "desk"
+        ],
+        "items": "laptop",
+        "NPC": null
+      },
+      "desk": {
+        "RoomName": "desk",
+        "directions": [
+          "5"
+        ],
+        "items": "wallet",
+        "NPC": null
+      },
+      "conference room": {
+        "RoomName": "conference room",
+        "directions": [
+          "5"
+        ],
+        "items": "phone",
+        "NPC": null
+      }
+    }
+  ]
+}
+
+
