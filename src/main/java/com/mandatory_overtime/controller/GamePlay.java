@@ -4,6 +4,7 @@ import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 
@@ -16,6 +17,21 @@ public class GamePlay {
   private String verb;
   private String noun;
 
+  public HashMap<String, String> roomsArray = new HashMap<>(){{
+    put("office", "breakroom");
+    put("breakroom", "office");
+  }};
+
+  private String currentLocation = "office";
+
+  public void moveRooms(){
+    if(roomsArray.containsKey(noun)){
+      currentLocation = noun;
+    }
+
+    System.out.println("Your current location is now the " + currentLocation);
+//    System.out.println("You look around and see" + itemsArray.keyset());
+  }
   public final BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
   public String[] userInputArray;
 
@@ -79,6 +95,8 @@ public void quit() {
         System.out.println(userView.showHelp());
       } else if (verb.equals("quit")) {
         quit();
+      } else if (verb.equals("go")) {
+        moveRooms();
       } else {
         System.out.println(userView.incorrectInput() + userView.showHelp());
       }
