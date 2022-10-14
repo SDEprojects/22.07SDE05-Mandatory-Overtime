@@ -50,7 +50,9 @@ public class GamePlay {
 //        System.out.println(verb + noun);
         if (verb.equals("help")) {
           System.out.println(userView.showHelp());
-        } else {
+        } else if (verb.equals("new")){
+            newGame();
+        }else {
           System.out.println("Wrong, Try again!");
         }
       } while (true);
@@ -58,7 +60,10 @@ public class GamePlay {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
-
+  }
+  public void newGame(){
+    GamePlay restart = new GamePlay();
+    restart.printGameIntroduction();
+    restart.gamePlayParser();
   }
 }
