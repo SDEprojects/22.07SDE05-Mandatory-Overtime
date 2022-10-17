@@ -1,0 +1,156 @@
+{
+  "Rooms": [
+    {
+      "elevator": {
+        "directions": [
+          "1-lobby",
+          "2-party floor",
+          "3-break room",
+          "4-dev floor",
+          "5-office"
+        ]
+      }
+    },
+    {
+      "5-office": {
+        "RoomName": "5-office",
+        "directions": [
+          "elevator",
+          "conference room",
+          "desk"
+        ],
+        "items": "laptop",
+        "NPC": null,
+        "preReq": null,
+        "fail" : true
+      }
+    },
+    {
+      "desk": {
+        "RoomName": "desk",
+        "directions": [
+          "5-office"
+        ],
+        "items": "wallet",
+        "NPC": null,
+        "preReq": "code",
+        "fail" : true
+      }
+    },
+    {
+      "conference room": {
+        "RoomName": "conference room",
+        "directions": [
+          "5-office"
+        ],
+        "items": "phone",
+        "NPC": null,
+        "preReq": "badge",
+        "fail": true
+      }
+    },
+    {
+      "4-dev floor" : {
+          "RoomName": "4-dev floor",
+          "directions": [
+            "elevator",
+            "it closet"
+          ],
+          "items": "sweater",
+          "NPC": null,
+          "preReq": "mask",
+          "fail" : true
+      }
+    },
+    {
+      "it closet": {
+        "RoomName": "it closet",
+        "directions": [
+          "4-dev floor"
+        ],
+        "items": "badge",
+        "NPC": null,
+        "preReq": "keyfob",
+        "fail": true
+      }
+    },
+    {
+      "3-break room": {
+        "RoomName": "3-break room",
+        "directions": [
+          "elevator",
+          "kitchen"
+        ],
+        "items": "keyfob",
+        "NPC": "roy",
+        "preReq": null,
+        "fail": true
+      }
+    },
+    {
+      "kitchen": {
+        "RoomName": "kitchen",
+        "directions": [
+          "3-break room"
+        ],
+        "items": "cake",
+        "NPC": null,
+        "preReq": "sweater",
+        "fail": true
+      }
+    },
+    {
+      "2-party floor": {
+        "RoomName": "2-party floor",
+        "directions": [
+          "elevator",
+          "table"
+        ],
+        "items": null,
+        "NPC": "brenda",
+        "preReq": null,
+        "fail": true
+      }
+    },
+    {
+      "table": {
+        "RoomName": "table",
+        "directions": [
+          "2-party floor"
+        ],
+        "items": "mask",
+        "NPC": null,
+        "preReq": null,
+        "fail": true
+      }
+    },
+    {
+      "1-lobby": {
+        "RoomName": "1-lobby",
+        "directions": [
+          "elevator",
+          "vending machine"
+        ],
+        "items": null,
+        "NPC": null,
+        "preReq": null,
+        "fail": true
+      }
+    },
+    {
+      "vending machine": {
+        "RoomName": "vending machine",
+        "directions": [
+          "1-lobby"
+        ],
+        "items": "raisinettes",
+        "NPC": null,
+        "preReq": "wallet",
+        "fail": true
+      }
+    }
+
+  ]
+}
+
+
