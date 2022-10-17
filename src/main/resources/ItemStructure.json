@@ -1,0 +1,104 @@
+{
+  "items": [
+    {
+      "laptop": {
+        "location": "5-office",
+        "purpose": "Can't leave the office without your laptop",
+        "preReq": null,
+        "challenge": true,
+        "challenge prompt" : "What is wrong with this line of code?",
+        "challenge answer": "nothing"
+      }
+    },
+    {
+      "mask": {
+        "location": "2-party floor",
+        "purpose": "A disguise! It would be hard for someone to recognize you with this.",
+        "preReq": null,
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "sweater": {
+        "location": "4-dev room",
+        "purpose": "A sweater, perfect to survive those ice-cold rooms!",
+        "preReq": null,
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "cake": {
+        "location": "kitchen",
+        "purpose": "I really hope everyone likes this cake.",
+        "preReq": null,
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "code": {
+        "location": "2-party floor",
+        "purpose": "Time for some unlocking!",
+        "preReq": "npc",
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "wallet": {
+        "location": "5-office",
+        "purpose": "You look in your wallet and see a few bills...",
+        "preReq": "code",
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "candy": {
+        "location": "1-lobby",
+        "purpose": "Now you can get Roy off your back.",
+        "preReq": "wallet",
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "it key fob": {
+        "location": "3-break room",
+        "purpose": "Hmmmmm... I wander that this key could possibly go to?",
+        "preReq": "npc",
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "badge": {
+        "location": "it closet",
+        "purpose": "Finally! There you are! Better hurry to my phone!",
+        "preReq": null,
+        "challenge": false,
+        "challenge prompt" : null,
+        "challenge answer": null
+      }
+    },
+    {
+      "phone": {
+        "location": "conference room",
+        "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
+        "preReq": null,
+        "challenge": true,
+        "challenge prompt" : "Passcode Hint: What rattles when it walks?",
+        "challenge answer": "Skeleton"
+      }
+    }
+  ]
+}
