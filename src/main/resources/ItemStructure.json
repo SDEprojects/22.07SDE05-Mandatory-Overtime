@@ -4,6 +4,7 @@
       "laptop": {
         "location": "5-office",
         "purpose": "Can't leave the office without your laptop",
+        "npc": false,
         "preReq": null,
         "challenge": true,
         "challenge prompt" : "What is wrong with this line of code?",
@@ -14,6 +15,7 @@
       "mask": {
         "location": "2-party floor",
         "purpose": "A disguise! It would be hard for someone to recognize you with this.",
+        "npc": false,
         "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
@@ -24,6 +26,7 @@
       "sweater": {
         "location": "4-dev room",
         "purpose": "A sweater, perfect to survive those ice-cold rooms!",
+        "npc": false,
         "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
@@ -34,6 +37,7 @@
       "cake": {
         "location": "kitchen",
         "purpose": "I really hope everyone likes this cake.",
+        "npc": false,
         "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
@@ -44,7 +48,8 @@
       "code": {
         "location": "2-party floor",
         "purpose": "Time for some unlocking!",
-        "preReq": "npc",
+        "npc": true,
+        "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
         "challenge answer": null
@@ -54,6 +59,7 @@
       "wallet": {
         "location": "5-office",
         "purpose": "You look in your wallet and see a few bills...",
+        "npc": false,
         "preReq": "code",
         "challenge": false,
         "challenge prompt" : null,
@@ -64,6 +70,7 @@
       "candy": {
         "location": "1-lobby",
         "purpose": "Now you can get Roy off your back.",
+        "npc": false,
         "preReq": "wallet",
         "challenge": false,
         "challenge prompt" : null,
@@ -74,7 +81,8 @@
       "it key fob": {
         "location": "3-break room",
         "purpose": "Hmmmmm... I wander that this key could possibly go to?",
-        "preReq": "npc",
+        "npc": true,
+        "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
         "challenge answer": null
@@ -84,6 +92,7 @@
       "badge": {
         "location": "it closet",
         "purpose": "Finally! There you are! Better hurry to my phone!",
+        "npc": false,
         "preReq": null,
         "challenge": false,
         "challenge prompt" : null,
@@ -94,6 +103,7 @@
       "phone": {
         "location": "conference room",
         "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
+        "npc": false,
         "preReq": null,
         "challenge": true,
         "challenge prompt" : "Passcode Hint: What rattles when it walks?",
