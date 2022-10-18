@@ -1,4 +1,7 @@
 package com.mandatory_overtime.model;
 
-public class ItemJSONReader {
+public class Npc {
+
+
+
 }
