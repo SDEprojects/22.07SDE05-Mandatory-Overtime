@@ -1,6 +1,6 @@
 package com.mandatory_overtime.model;
 
-public class ItemStructure {
+public class Item {
 
 
 }
