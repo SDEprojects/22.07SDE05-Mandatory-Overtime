@@ -47,24 +47,20 @@ public class GamePlay {
     }
   }
 
-  public void newGame() throws IOException {
-    GamePlay restart = new GamePlay();
-    restart.printGameIntroduction();
-    restart.gamePlayCommands();
-  }
 
-  public void quit() throws IOException {
+
+  public void quitMenu() throws IOException {
 //    this prompts user whether they want to quit continue or new game
     System.out.println(
         "Are you sure you would like to quit, start a new game or would you like to continue your game? \n(Enter: 'quit', 'new game', or 'continue game')");
     while (true) {
       gamePlayParser();
       if (verb.equals("quit")) {
-        System.exit(0); //building.quit()
+        building.quit();
       } else if (verb.equals("new")) {
-        newGame(); //building.newGme()
+        building.newGame();
       } else if (verb.equals("continue")) {
-        break; //samesy
+        break;
       }
       System.out.println("Please type 'quit', 'new game' or 'continue game'");
     }
@@ -79,7 +75,7 @@ public class GamePlay {
         if (verb.equals("help")) {
           System.out.println(userView.showHelp());
         } else if (verb.equals("quit")) {
-          quit();
+          quitMenu();
         } else if (verb.equals("go")) {
   //       add moveRooms method. Invoke method in building to move(noun)
         } else if (verb.equals("get")) {
@@ -93,8 +89,7 @@ public class GamePlay {
         throw new RuntimeException(e);
       }
 
-    } while (true);//building is updating the state
+    } while (!building.getGameState());//building is updating the state
     //State = state.loss
-    //!building.getGameState()
   }
 }

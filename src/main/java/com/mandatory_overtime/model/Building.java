@@ -2,6 +2,7 @@ package com.mandatory_overtime.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mandatory_overtime.controller.GamePlay;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,7 +26,7 @@ public class Building {
   //  Instantiations for the game to Building.
   Player player = new Player();
   //  Creates game state
-  private GameState gameState = GameState.IN_PROGRESS;
+  private boolean gameState;
   private List<Npc> npcs;
   private HashMap<String, Room> building;
   private HashMap<String, Item> items;
@@ -35,6 +36,7 @@ public class Building {
   // Constructor to create structures
   public Building() throws IOException {
     Gson gson = new Gson();
+    setGameState(GameState.IN_PROGRESS.isTerminal());
     List<Room> rooms = load("RoomStructure.json", gson, new TypeToken<ArrayList<Room>>() {
     }.getType());
 
@@ -46,16 +48,17 @@ public class Building {
 
     items = (HashMap<String, Item>) itemArray.stream()
         .collect(Collectors.toMap(Item::getName, item -> item));
+    System.out.println("Item map " + items.get("keyfob").getPreReq());
 
   }
 
 //  GETTERS/SETTERS
 
-  public GameState getGameState() {
+  public boolean getGameState() {
     return gameState;
   }
 
-  public void setGameState(GameState gameState) {
+  public void setGameState(boolean gameState) {
     this.gameState = gameState;
   }
 
@@ -71,7 +74,19 @@ public class Building {
 
   }
 
-  //  BUSINESS METHODS
+//  BUSINESS METHODS
+
+  //
+  public void newGame() throws IOException {
+    GamePlay restart = new GamePlay();
+    restart.printGameIntroduction();
+    restart.gamePlayCommands();
+  }
+  //LOSS State ends game
+  public void quit(){
+    setGameState(GameState.LOSS.isTerminal());
+  }
+
 
   public void moveRooms(String noun) {
     String currentLoc = player.getCurrentLocation();
@@ -158,7 +173,6 @@ public class Building {
     }
 
   }
+
+
 }
-
-
-
