@@ -5,63 +5,63 @@ import com.google.gson.annotations.SerializedName;
 public class Room {
   //Simplify field names to remove location
   @SerializedName("directions")
-  private String[] locationsDirections;//Can become array of rooms.
+  private String[] directions;//Can become array of rooms.
   @SerializedName("items")
-  private String locationItem;
+  private String item;
   @SerializedName("NPC")
-  private String locationNPC;
+  private String NPC;
   @SerializedName("RoomName")
-  private String locationDisplayName;
+  private String displayName;
   @SerializedName("preReq")
-  private String locationPreReqs;
+  private String preReq;
   @SerializedName("fail")
-  private Boolean locationFailCondition;
+  private Boolean failCondition;
 
-  public String[] getLocationsDirections() {
-    return locationsDirections;
+  public String[] getDirections() {
+    return directions;
   }
 
-  public void setLocationsDirections(String[] locationsDirections) {
-    this.locationsDirections = locationsDirections;
+  public void setDirections(String[] directions) {
+    this.directions = directions;
   }
 
-  public String getLocationItem() {
-    return locationItem;
+  public String getItem() {
+    return item;
   }
 
-  public void setLocationItem(String locationItem) {
-    this.locationItem = locationItem;
+  public void setItem(String item) {
+    this.item = item;
   }
 
-  public String getLocationNPC() {
-    return locationNPC;
+  public String getNPC() {
+    return NPC;
   }
 
-  public void setLocationNPC(String locationNPC) {
-    this.locationNPC = locationNPC;
+  public void setNPC(String NPC) {
+    this.NPC = NPC;
   }
 
-  public String getLocationDisplayName() {
-    return locationDisplayName;
+  public String getDisplayName() {
+    return displayName;
   }
 
-  public void setLocationDisplayName(String locationDisplayName) {
-    this.locationDisplayName = locationDisplayName;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
-  public String getLocationPreReqs() {
-    return locationPreReqs;
+  public String getPreReq() {
+    return preReq;
   }
 
-  public void setLocationPreReqs(String locationPreReqs) {
-    this.locationPreReqs = locationPreReqs;
+  public void setPreReq(String preReq) {
+    this.preReq = preReq;
   }
 
-  public Boolean getLocationFailCondition() {
-    return locationFailCondition;
+  public Boolean getFailCondition() {
+    return failCondition;
   }
 
-  public void setLocationFailCondition(Boolean locationFailCondition) {
-    this.locationFailCondition = locationFailCondition;
+  public void setFailCondition(Boolean failCondition) {
+    this.failCondition = failCondition;
   }
 }
