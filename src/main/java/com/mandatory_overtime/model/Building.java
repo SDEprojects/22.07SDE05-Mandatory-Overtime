@@ -2,6 +2,7 @@ package com.mandatory_overtime.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -65,12 +66,12 @@ private <T> T load(String resourceFile, Gson gson, Type type) throws IOException
   public void moveRooms(String noun){
     String currentLoc =  player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
-    for(String direction: directions){
-      if(noun.equals(direction)){
-        player.setCurrentLocation(noun);
-        System.out.println("You are now at the" + noun);
-      }
-    }
+        for (String direction : directions) {
+          if (noun.equals(direction)) {
+            player.setCurrentLocation(noun);
+            System.out.println("You are now at the" + noun);
+          }
+        }
   }
 
 
