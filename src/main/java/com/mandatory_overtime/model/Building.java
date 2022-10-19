@@ -10,8 +10,6 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +23,14 @@ public class Building {
 
   Player player = new Player();
   private boolean gameState;
-  private List<Npc> npcs;
   private HashMap<String, Room> building;
   private HashMap<String, Item> items;
+  private HashMap<String, Npc> npcs;
+  private int npcCount = 0;
 
 // CONSTRUCTOR
 
-  // Constructor to create structures
+// Constructor to create structures
   public Building() throws IOException {
     Gson gson = new Gson();
     setGameState(GameState.IN_PROGRESS.isTerminal());
@@ -41,12 +40,18 @@ public class Building {
     List<Item> itemArray = load("ItemStructure.json", gson, new TypeToken<ArrayList<Item>>() {
     }.getType());
 
+    List<Npc> npcsArray = load("NPCStructure.json", gson, new TypeToken<ArrayList<Npc>>() {
+    }.getType());
+
     building = (HashMap<String, Room>) rooms.stream().collect(
         Collectors.toMap(Room::getDisplayName, room -> room));
 
     items = (HashMap<String, Item>) itemArray.stream()
         .collect(Collectors.toMap(Item::getName, item -> item));
     System.out.println("Item map " + items.get("keyfob").getPreReq());
+
+    npcs = (HashMap<String, Npc>) npcsArray.stream().collect(
+        Collectors.toMap(Npc::getName, npc -> npc));
 
   }
 
@@ -174,5 +179,28 @@ public class Building {
 
   }
 
+
+  public void interactWithNpc(String noun) {
+    for (String npc : npcs.keySet()) {
+      if (npc.equals(noun)) {
+        if (!player.getInventory().contains(npcs.get(npc).getPrereq())
+            && npcs.get(npc).getNpcCount() == 0) {
+          System.out.println(npcs.get(npc).getInitialDialogue());
+          npcs.get(npc).getNpcCount();
+        } else if (player.getInventory().contains((npcs.get(npc).getPrereq()))) {
+          System.out.println((npcs.get(npc).getDialogueWithItem()));
+          player.removeFromInventory((npcs.get(npc).getPrereq()));
+          player.addToInventory((npcs.get(npc).getItems()));
+          npcs.get(npc).setItems(null);
+        } else if ((npcs.get(npc).getItems()) == null) {
+          System.out.println("Go away youngin... I'm busy and have no more business with you!");
+        } else if (!player.getInventory().contains((npcs.get(npc).getPrereq()))
+            && npcs.get(npc).getNpcCount() >= 1) {
+          System.out.println(npcs.get(npc).getDialogueNoItem());
+          player.addToInventory(npcs.get(npc).getPrereq());
+        }
+      }
+    }
+  }
 
 }
