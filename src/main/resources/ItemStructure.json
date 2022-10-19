@@ -1,112 +1,112 @@
 [
   {
-    "laptop": {
-      "location": "5-office",
-      "purpose": "Can't leave the office without your laptop",
-      "npc": false,
-      "preReq": null,
-      "challenge": true,
-      "challenge prompt" : "What is wrong with this line of code?",
-      "challenge answer": "nothing"
-    }
+    "item": "laptop",
+    "location": "office",
+    "purpose": "Can't leave the office without your laptop",
+    "npc": false,
+    "preReq": null,
+    "challenge": true,
+    "challenge prompt" : "What is wrong with this line of code?",
+    "challenge answer": "nothing",
+    "acquired": false
   },
   {
-    "mask": {
-      "location": "2-party floor",
-      "purpose": "A disguise! It would be hard for someone to recognize you with this.",
-      "npc": false,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "mask",
+    "location": "party floor",
+    "purpose": "A disguise! It would be hard for someone to recognize you with this.",
+    "npc": false,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "sweater": {
-      "location": "4-dev room",
-      "purpose": "A sweater, perfect to survive those ice-cold rooms!",
-      "npc": false,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "sweater",
+    "location": "dev room",
+    "purpose": "A sweater, perfect to survive those ice-cold rooms!",
+    "npc": false,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "cake": {
-      "location": "kitchen",
-      "purpose": "I really hope everyone likes this cake.",
-      "npc": false,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "cake",
+    "location": "kitchen",
+    "purpose": "I really hope everyone likes this cake.",
+    "npc": false,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "code": {
-      "location": "2-party floor",
-      "purpose": "Time for some unlocking!",
-      "npc": true,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "code",
+    "location": "party floor",
+    "purpose": "Time for some unlocking!",
+    "npc": true,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "wallet": {
-      "location": "5-office",
-      "purpose": "You look in your wallet and see a few bills...",
-      "npc": false,
-      "preReq": "code",
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item":"wallet",
+    "location": "desk",
+    "purpose": "You look in your wallet and see a few bills...",
+    "npc": false,
+    "preReq": "code",
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "raisinetes": {
-      "location": "1-lobby",
-      "purpose": "Now you can get Roy off your back.",
-      "npc": false,
-      "preReq": "wallet",
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "raisinets",
+    "location": "lobby",
+    "purpose": "Now you can get Roy off your back.",
+    "npc": false,
+    "preReq": "wallet",
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "it key fob": {
-      "location": "3-break room",
-      "purpose": "Hmmmmm... I wander that this key could possibly go to?",
-      "npc": true,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "keyfob",
+    "location": "break room",
+    "purpose": "Hmmmmm... I wander that this key could possibly go to?",
+    "npc": true,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "badge": {
-      "location": "it closet",
-      "purpose": "Finally! There you are! Better hurry to my phone!",
-      "npc": false,
-      "preReq": null,
-      "challenge": false,
-      "challenge prompt" : null,
-      "challenge answer": null
-    }
+    "item": "badge",
+    "location": "it closet",
+    "purpose": "Finally! There you are! Better hurry to my phone!",
+    "npc": false,
+    "preReq": null,
+    "challenge": false,
+    "challenge prompt" : null,
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "phone": {
-      "location": "conference room",
-      "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
-      "npc": false,
-      "preReq": null,
-      "challenge": true,
-      "challenge prompt" : "Passcode Hint: What rattles when it walks?",
-      "challenge answer": "skeleton"
-    }
+    "item": "phone",
+    "location": "conference room",
+    "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
+    "npc": false,
+    "preReq": null,
+    "challenge": true,
+    "challenge prompt" : "Passcode Hint: What rattles when it walks?",
+    "challenge answer": "skeleton",
+    "acquired": false
   }
 ]
