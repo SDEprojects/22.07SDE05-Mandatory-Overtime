@@ -7,11 +7,17 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 //This class is a culmination of the json structures.
 public class Building {
+
+  private final HashMap<String, Room> building;
+
 
 //  FIELDS
 
@@ -20,9 +26,6 @@ private GameState gameState = GameState.IN_PROGRESS;
 
 //  Instantiations for the game to Building.
   Player player = new Player();
- private List<Room> rooms;
- private List<Item> items;
- private List<Npc> npcs;
 
 
 // CONSTRUCTOR
@@ -30,10 +33,11 @@ private GameState gameState = GameState.IN_PROGRESS;
 // Constructor to create structures
   public Building() throws IOException {
     Gson gson = new Gson();
-    rooms = load("RoomStructure.json", gson, new TypeToken<ArrayList<Room>>(){}.getType());
-    items = load("ItemStructure.json", gson, new TypeToken<ArrayList<Item>>(){}.getType());
-    npcs = load("NPCStructure.json", gson, new TypeToken<ArrayList<Npc>>(){}.getType());
+    List<Room> rooms = load("RoomStructure.json", gson, new TypeToken<ArrayList<Room>>(){}.getType());
 
+    building = (HashMap<String, Room>) rooms.stream().collect(
+        Collectors.toMap(Room::getDisplayName, room -> room));
+    player.setCurrentLocation("office");
   }
 
 //  GETTERS/SETTERS
@@ -55,11 +59,19 @@ private <T> T load(String resourceFile, Gson gson, Type type) throws IOException
     return gson.fromJson(reader, type);
   }
 
-//  BUSINESS METHODS
 
 }
-
-
+  //  BUSINESS METHODS
+  public void moveRooms(String noun){
+    String currentLoc =  player.getCurrentLocation();
+    String[] directions = building.get(currentLoc).getDirections();
+    for(String direction: directions){
+      if(noun.equals(direction)){
+        player.setCurrentLocation(noun);
+        System.out.println("You are now at the" + noun);
+      }
+    }
+  }
 
 
 
