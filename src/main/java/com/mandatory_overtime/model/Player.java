@@ -10,11 +10,9 @@ public class Player {
 
   private List<String> inventory = new ArrayList<>();
   private String name;
-  private String currentLocation = "office";
+  private String currentLocation = "conference room";
   private int failCount;
   private Timer timer = new Timer();
-
-
 
 
 
@@ -58,12 +56,22 @@ public class Player {
     this.timer = timer;
   }
 
-  public void removeFromInventory(String item) {
-    inventory.remove(item);
+  /**
+   * Adds to inventory for Player
+   *
+   * @param item input item from user to be added to inventory.
+   */
+  public void addToInventory(String item){
+    inventory.add(item);
   }
 
-  public void addToInventory(String item) {
-    inventory.add(item);
+  /**
+   * Removes item from inventory for Player
+   *
+   * @param item
+   */
+  public void removeFromInventory(String item){
+    inventory.remove(item);
   }
 
 
