@@ -85,7 +85,7 @@ public class GamePlay {
         } else if (verb.equals("get")) {
   //     add get Item method
         } else if (verb.equals("interact")) {
-  //        add npc interact method here
+          building.interactWithNpc(noun);
         } else {
           System.out.println(userView.incorrectInput() + userView.showHelp());
         }

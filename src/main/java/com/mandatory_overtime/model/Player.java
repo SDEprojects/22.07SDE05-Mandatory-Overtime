@@ -16,6 +16,8 @@ public class Player {
 
 
 
+
+
   public List<String> getInventory() {
     return inventory;
   }
@@ -54,6 +56,14 @@ public class Player {
 
   public void setTimer(Timer timer) {
     this.timer = timer;
+  }
+
+  public void removeFromInventory(String item) {
+    inventory.remove(item);
+  }
+
+  public void addToInventory(String item) {
+    inventory.add(item);
   }
 
 

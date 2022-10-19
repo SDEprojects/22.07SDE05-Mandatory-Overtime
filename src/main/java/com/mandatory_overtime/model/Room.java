@@ -11,11 +11,11 @@ public class Room {
   @SerializedName("NPC")
   private String locationNPC;
   @SerializedName("RoomName")
-  private String locationDisplayName;
+  private String DisplayName;
   @SerializedName("preReq")
   private String locationPreReqs;
   @SerializedName("fail")
-  private Boolean locationFailCondition;
+  private Boolean FailCondition;
 
   public String[] getLocationsDirections() {
     return locationsDirections;
@@ -41,12 +41,12 @@ public class Room {
     this.locationNPC = locationNPC;
   }
 
-  public String getLocationDisplayName() {
-    return locationDisplayName;
+  public String getDisplayName() {
+    return DisplayName;
   }
 
-  public void setLocationDisplayName(String locationDisplayName) {
-    this.locationDisplayName = locationDisplayName;
+  public void setDisplayName(String locationDisplayName) {
+    this.DisplayName = locationDisplayName;
   }
 
   public String getLocationPreReqs() {
@@ -57,11 +57,5 @@ public class Room {
     this.locationPreReqs = locationPreReqs;
   }
 
-  public Boolean getLocationFailCondition() {
-    return locationFailCondition;
-  }
 
-  public void setLocationFailCondition(Boolean locationFailCondition) {
-    this.locationFailCondition = locationFailCondition;
-  }
 }
