@@ -39,7 +39,7 @@ public class GamePlay {
   public void gamePlayParser() {
 //    this parses userInput into 1st word == verb and last word == noun
     try {
-      userInputArray = inputParser.readLine().trim().split(" ", 1);
+      userInputArray = inputParser.readLine().trim().split(" ");
       verb = userInputArray[0];
       noun = userInputArray[userInputArray.length - 1];
     } catch (IOException e) {
@@ -83,7 +83,7 @@ public class GamePlay {
         } else if (verb.equals("go")) {
   //       add moveRooms method. Invoke method in building to move(noun)
         } else if (verb.equals("get")) {
-  //     add get Item method
+          building.getItem(noun);
         } else if (verb.equals("interact")) {
   //        add npc interact method here
         } else {

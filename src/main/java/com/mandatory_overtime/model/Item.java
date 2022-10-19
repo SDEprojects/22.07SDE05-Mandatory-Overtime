@@ -20,16 +20,24 @@ public class Item {
   private String preReq;
   @SerializedName("challenge")
   private Boolean challenge;
-  @SerializedName("challengePrompt")
+  @SerializedName("challenge prompt")
   private String challengePrompt;
-  @SerializedName("challengeAnswer")
+  @SerializedName("challenge answer")
   private String challengeAnswer;
+  @SerializedName("acquired")
+  private Boolean acquired;
 
+  public Boolean getAcquired() {
+    return acquired;
+  }
+
+  public void setAcquired(Boolean acquired) {
+    this.acquired = acquired;
+  }
 
   public String getName() {
     return name;
   }
-
   public void setName(String name) {
     this.name = name;
   }

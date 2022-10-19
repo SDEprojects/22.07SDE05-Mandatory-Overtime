@@ -1,33 +1,36 @@
 [
   {
     "item": "laptop",
-    "location": "5-office",
+    "location": "office",
     "purpose": "Can't leave the office without your laptop",
     "npc": false,
     "preReq": null,
     "challenge": true,
     "challenge prompt" : "What is wrong with this line of code?",
-    "challenge answer": "nothing"
+    "challenge answer": "nothing",
+    "acquired": false
   },
   {
     "item": "mask",
-    "location": "2-party floor",
+    "location": "party floor",
     "purpose": "A disguise! It would be hard for someone to recognize you with this.",
     "npc": false,
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "sweater",
-    "location": "4-dev room",
+    "location": "dev room",
     "purpose": "A sweater, perfect to survive those ice-cold rooms!",
     "npc": false,
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "cake",
@@ -37,47 +40,52 @@
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "code",
-    "location": "2-party floor",
+    "location": "party floor",
     "purpose": "Time for some unlocking!",
     "npc": true,
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item":"wallet",
-    "location": "5-office",
+    "location": "desk",
     "purpose": "You look in your wallet and see a few bills...",
     "npc": false,
     "preReq": "code",
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
-    "item": "raisinettes",
-    "location": "1-lobby",
+    "item": "raisinets",
+    "location": "lobby",
     "purpose": "Now you can get Roy off your back.",
     "npc": false,
     "preReq": "wallet",
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "keyfob",
-    "location": "3-break room",
+    "location": "break room",
     "purpose": "Hmmmmm... I wander that this key could possibly go to?",
     "npc": true,
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "badge",
@@ -87,7 +95,8 @@
     "preReq": null,
     "challenge": false,
     "challenge prompt" : null,
-    "challenge answer": null
+    "challenge answer": null,
+    "acquired": false
   },
   {
     "item": "phone",
@@ -97,6 +106,7 @@
     "preReq": null,
     "challenge": true,
     "challenge prompt" : "Passcode Hint: What rattles when it walks?",
-    "challenge answer": "skeleton"
+    "challenge answer": "skeleton",
+    "acquired": false
   }
 ]

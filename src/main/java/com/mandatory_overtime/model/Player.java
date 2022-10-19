@@ -10,7 +10,7 @@ public class Player {
 
   private List<String> inventory = new ArrayList<>();
   private String name;
-  private String currentLocation = "office";
+  private String currentLocation = "conference room";
   private int failCount;
   private Timer timer = new Timer();
 
