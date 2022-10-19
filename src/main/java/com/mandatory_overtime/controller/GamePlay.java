@@ -39,7 +39,7 @@ public class GamePlay {
   public void gamePlayParser() {
 //    this parses userInput into 1st word == verb and last word == noun
     try {
-      userInputArray = inputParser.readLine().trim().split(" ");
+      userInputArray = inputParser.readLine().trim().split(" ", 1);
       verb = userInputArray[0];
       noun = userInputArray[userInputArray.length - 1];
     } catch (IOException e) {

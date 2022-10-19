@@ -56,5 +56,23 @@ public class Player {
     this.timer = timer;
   }
 
+  /**
+   * Adds to inventory for Player
+   *
+   * @param item input item from user to be added to inventory.
+   */
+  public void addToInventory(String item){
+    inventory.add(item);
+  }
+
+  /**
+   * Removes item from inventory for Player
+   *
+   * @param item
+   */
+  public void removeFromInventory(String item){
+    inventory.remove(item);
+  }
+
 
 }
