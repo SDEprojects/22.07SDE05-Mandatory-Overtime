@@ -20,6 +20,9 @@ public class GamePlay {
     building = new Building();
   }
 
+  public void startGame() throws IOException {
+    building.newGame();
+  }
 
   public void printGameIntroduction() {
     try {

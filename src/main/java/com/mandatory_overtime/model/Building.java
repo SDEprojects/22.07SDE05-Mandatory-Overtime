@@ -23,9 +23,7 @@ public class Building {
 
 //  FIELDS
 
-  //  Instantiations for the game to Building.
   Player player = new Player();
-  //  Creates game state
   private boolean gameState;
   private List<Npc> npcs;
   private HashMap<String, Room> building;
@@ -84,7 +82,9 @@ public class Building {
   }
   //LOSS State ends game
   public void quit(){
-    setGameState(GameState.LOSS.isTerminal());
+    System.exit(0); //Update to utilize state.
+//    setGameState(GameState.LOSS.isTerminal());
+//    System.out.println("Is quit() working?????");
   }
 
 
