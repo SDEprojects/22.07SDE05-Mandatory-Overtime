@@ -5,6 +5,7 @@ import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class GamePlay {
 
@@ -42,9 +43,9 @@ public class GamePlay {
   public void gamePlayParser() {
 //    this parses userInput into 1st word == verb and last word == noun
     try {
-      userInputArray = inputParser.readLine().trim().split(" ");
+      userInputArray = inputParser.readLine().trim().toLowerCase().split(" ", 2);
       verb = userInputArray[0];
-      noun = userInputArray[userInputArray.length - 1];
+      noun = userInputArray[1];
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -85,7 +86,14 @@ public class GamePlay {
           building.getItem(noun);
         } else if (verb.equals("interact")) {
           building.interactWithNpc(noun);
-        } else {
+        } else if (verb.equals("inspect")){
+          building.inspectItem(noun);
+        }else if(verb.equals("god")){
+          //Type "god mode" will add all items to inventory.
+          building.getAllItems(noun);
+        }else if(verb.equals("look")){
+          building.getRoomDescriptionInfo();
+        }else {
           System.out.println(userView.incorrectInput() + userView.showHelp());
         }
       } catch (Exception e) {
