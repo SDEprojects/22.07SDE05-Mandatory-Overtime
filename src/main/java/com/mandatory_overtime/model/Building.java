@@ -31,7 +31,7 @@ public class Building {
 
 // CONSTRUCTOR
 
-// Constructor to create structures
+  // Constructor to create structures
   public Building() throws IOException {
     Gson gson = new Gson();
     setGameState(GameState.IN_PROGRESS.isTerminal());
@@ -86,8 +86,9 @@ public class Building {
     restart.printGameIntroduction();
     restart.gamePlayCommands();
   }
+
   //LOSS State ends game
-  public void quit(){
+  public void quit() {
     System.exit(0); //Update to utilize state.
 //    setGameState(GameState.LOSS.isTerminal());
 //    System.out.println("Is quit() working?????");
@@ -126,6 +127,7 @@ public class Building {
           player.addToInventory(item);
           items.get(item).setAcquired(true);
           //remove item from list in rooms method
+          System.out.println(items.get(item).getPurpose());
           System.out.println(player.getInventory().toString());
         }
       } else {
@@ -137,9 +139,9 @@ public class Building {
 
   }
 
-  public void getAllItems(String noun){
-    if(noun.equals("mode")){
-      for(String itemN : items.keySet()){
+  public void getAllItems(String noun) {
+    if (noun.equals("mode")) {
+      for (String itemN : items.keySet()) {
         player.addToInventory(itemN);
         items.get(itemN).setAcquired(true);
         items.get(itemN).setChallenge(false);
@@ -155,7 +157,8 @@ public class Building {
     if (player.getInventory().contains(items.get(item).getPreReq())) {
       player.addToInventory(item);
       items.get(item).setAcquired(true);
-      player.removeFromInventory(items.get(item).getPreReq()); //removes prereq from player inventory
+      player.removeFromInventory(
+          items.get(item).getPreReq()); //removes prereq from player inventory
 
       System.out.println("Prereq inventory method " + player.getInventory().toString());
 
@@ -166,44 +169,48 @@ public class Building {
   }
 
   private void runItemChallenge(String item) throws IOException {
+    while (!player.getInventory().contains(item)) {
+      //reads input
+      BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
+      //print prompt
+      System.out.println(items.get(item).getChallengePrompt());
+      String userAnswer = inputParser.readLine().toLowerCase().trim();
+      //if user answer correct, add to inventory. Set item challenge to false. Set acquired to true.
+      if (items.get(item).getChallengeAnswer().equals(userAnswer)) {
+        player.addToInventory(item);
+        items.get(item).setAcquired(true);
+        items.get(item).setChallenge(false);
+        System.out.println("challenge won inv " + player.getInventory().toString());
+      } else {
+        System.out.println("Would you like to try again? Enter 'yes' or 'no'.");
+        String userAnswer1 = inputParser.readLine().toLowerCase().trim();
+        while (true) {
+          if (userAnswer1.equals("yes")) {
 
-    //reads input
-    BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
-
-    //print prompt
-    System.out.println(items.get(item).getChallengePrompt());
-    String userAnswer = inputParser.readLine().toLowerCase().trim();
-
-    //if user answer correct, add to inventory. Set item challenge to false. Set acquired to true.
-    if (items.get(item).getChallengeAnswer().equals(userAnswer)) {
-      player.addToInventory(item);
-      items.get(item).setAcquired(true);
-      items.get(item).setChallenge(false);
-      System.out.println("challenge won inv " + player.getInventory().toString());
-    } else {
-      System.out.println("Would you like to try again? Enter 'yes' or 'no'.");
-      String userAnswer1 = inputParser.readLine().toLowerCase().trim();
-
-      if (userAnswer1.equals("yes")) {
-        runItemChallenge(item);
-
-      } else if (userAnswer1.equals("no")) {
-        return;
+            runItemChallenge(item);
+            break;
+          } else if (userAnswer1.equals("no")) {
+            return;
+          } else {
+            System.out.println("Please enter 'Yes' or 'No'");
+            userAnswer1 = inputParser.readLine().toLowerCase().trim();
+          }
+        }
       }
     }
-
   }
 
-  public void inspectItem(String item){
+
+  public void inspectItem(String item) {
     //checks if item exists, if location is correct, if item is held by NPC
-    if(items.containsKey(item) && items.get(item).getLocation().equals(player.getCurrentLocation())
-        && items.get(item).isNpc() == false){
+    if (items.containsKey(item) && items.get(item).getLocation().equals(player.getCurrentLocation())
+        && items.get(item).isNpc() == false) {
       System.out.println(items.get(item).getPurpose());
     }
   }
 
 
-  public void getRoomDescriptionInfo() throws IOException {
+  public void getRoomDescriptionInfo() {
 
     String inventory = player.getInventory().toString();
     String currentLocation = player.getCurrentLocation();
@@ -212,19 +219,30 @@ public class Building {
     String directions = Arrays.toString(building.get(currentLocation).getDirections());
 
     System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-        + "========================================================================================================\n"
-        + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
-        + "Items in Room: %3$s\n"
-        + "========================================================================================================\n"
-        + "You are currently at %2$S\n"
-        + "You see your coworker %4$s\n"
-        + "You can go the directions %5$s\n"
-        + "You see the items %3$s\n"
-        + "========================================================================================================\n", inventory, currentLocation, item, npc, directions);
-
+            + "========================================================================================================\n"
+            + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
+            + "Items in Room: %3$s\n"
+            + "========================================================================================================\n"
+            + "You are currently at the %2$S\n"
+            + "You see your coworker %4$s\n"
+            + "You can go the to %5$s\n"
+            + "You see the item, %3$s\n"
+            + "========================================================================================================\n",
+        inventory, currentLocation, item, npc, directions);
   }
 
-
+  public void startingRoomDescription() {
+    String currentLocation = player.getCurrentLocation();
+    String directions = Arrays.toString(building.get(currentLocation).getDirections());
+    String item = building.get(currentLocation).getItem();
+    System.out.printf(
+        "========================================================================================================\n"
+            + "You are currently at the %1$S\n"
+            + "You see the item, %3$s\n"
+            + "You can go the to %2$s\n"
+            + "========================================================================================================\n",
+        currentLocation, directions, item);
+  }
 
   public void interactWithNpc(String noun) {
     for (String npc : npcs.keySet()) {
@@ -243,7 +261,7 @@ public class Building {
         } else if (!player.getInventory().contains((npcs.get(npc).getPrereq()))
             && npcs.get(npc).getNpcCount() >= 1) {
           System.out.printf(npcs.get(npc).getDialogueNoItem(), player.getName());
-          player.addToInventory(npcs.get(npc).getPrereq());
+//          player.addToInventory(npcs.get(npc).getPrereq());
         }
       }
     }

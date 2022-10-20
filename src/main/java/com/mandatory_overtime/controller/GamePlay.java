@@ -41,6 +41,7 @@ public class GamePlay {
       }
       building.setName(name);
       System.out.println(userView.startUpInfo(name));
+      building.startingRoomDescription();
       //run printRoomDescription() here to show current room.
     } catch (IOException e) {
       throw new RuntimeException(e);

@@ -170,7 +170,7 @@
     "directions": [
       "lobby"
     ],
-    "items": "raisinettes",
+    "items": "raisinets",
     "NPC": null,
     "preReq": "wallet",
     "fail": true
