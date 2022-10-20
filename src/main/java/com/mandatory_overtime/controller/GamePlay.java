@@ -53,7 +53,7 @@ public class GamePlay {
     try {
       userInputArray = inputParser.readLine().trim().toLowerCase().split(" ", 2);
       verb = userInputArray[0];
-      noun = userInputArray[1];
+      noun = userInputArray[userInputArray.length-1];
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

@@ -134,7 +134,7 @@ public class Building {
         checkItemPreReqIsFulfilled(item);
       }
     } else {
-      System.out.printf("You cannot get %s", item);
+      System.out.printf("You cannot get %s.\n>", item);
     }
 //
 //    if (!items.containsKey((item)) && !items.get(item).getLocation().equals(playerCurrentLocation)
@@ -184,10 +184,10 @@ public class Building {
       player.removeFromInventory(
           items.get(item).getPreReq()); //removes prereq from player inventory
 
-      System.out.println("Prereq inventory method " + player.getInventory().toString());
+      System.out.println("Added to inventory " + player.getInventory().toString());
 
     } else {
-      System.out.println("You need " + items.get(item).getPreReq() + " to get this item.");
+      System.out.println("You need " + items.get(item).getPreReq() + " to get this item.\n>");
 
     }
   }
