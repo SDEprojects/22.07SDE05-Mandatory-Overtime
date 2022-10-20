@@ -102,14 +102,14 @@ public class Building {
       if (noun.equals(direction)) {
         player.setCurrentLocation(noun);
 //        System.out.println("You are now at the" + noun);
-//        getRoomDescriptionInfo();
+        getRoomDescriptionInfo();
       }
     }
   }
 
 
   public void getItem(String item) throws IOException {
-//    getRoomDescriptionInfo();
+    getRoomDescriptionInfo();
     String playerCurrentLocation = player.getCurrentLocation();
 
     //conditional to check if item is in array //check if location correct // check if npc doesn't have it
@@ -204,7 +204,26 @@ public class Building {
   }
 
 
+  public void getRoomDescriptionInfo() throws IOException {
 
+    String inventory = player.getInventory().toString();
+    String currentLocation = player.getCurrentLocation();
+    String npc = building.get(currentLocation).getNPC();
+    String item = building.get(currentLocation).getItem();
+    String directions = Arrays.toString(building.get(currentLocation).getDirections());
+
+    System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        + "========================================================================================================\n"
+        + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
+        + "Items in Room: %3$s\n"
+        + "========================================================================================================\n"
+        + "You are currently at %2$S\n"
+        + "You see your coworker %4$s\n"
+        + "You can go the directions %5$s\n"
+        + "You see the items %3$s\n"
+        + "========================================================================================================\n", inventory, currentLocation, item, npc, directions);
+
+  }
 
 
 
