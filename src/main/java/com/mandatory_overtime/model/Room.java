@@ -16,6 +16,16 @@ public class Room {
   private String preReq;
   @SerializedName("fail")
   private Boolean failCondition;
+  @SerializedName("description")
+  private String description;
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
   public String[] getDirections() {
     return directions;

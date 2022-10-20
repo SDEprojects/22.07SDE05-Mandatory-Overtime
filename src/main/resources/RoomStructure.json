@@ -69,7 +69,8 @@
     "items": "laptop",
     "NPC": null,
     "preReq": null,
-    "fail": true
+    "fail": true,
+    "description": "You're at the Office on the 5th floor and feel the darkness encroaching on you, or just the darkmode of your laptop."
   },
   {
     "RoomName": "desk",
@@ -79,7 +80,8 @@
     "items": "wallet",
     "NPC": null,
     "preReq": "code",
-    "fail": true
+    "fail": true,
+    "description": "You're at your messy desk."
   },
   {
     "RoomName": "conference room",
@@ -89,7 +91,8 @@
     "items": "phone",
     "NPC": null,
     "preReq": "badge",
-    "fail": true
+    "fail": true,
+    "description": "You're at the Conference Room, it's only you here at the moment."
   },
   {
     "RoomName": "dev floor",
@@ -100,7 +103,8 @@
     "items": "sweater",
     "NPC": null,
     "preReq": "mask",
-    "fail": true
+    "fail": true,
+    "description": "You're at the the Dev Floor. A wave of pressure washes over you as you see the professionals at work."
   },
   {
     "RoomName": "it closet",
@@ -110,7 +114,8 @@
     "items": "badge",
     "NPC": null,
     "preReq": "keyfob",
-    "fail": false
+    "fail": false,
+    "description": "You're at the IT Closet. It's hot as you enter the windowless room."
   },
   {
     "RoomName": "break room",
@@ -121,7 +126,8 @@
     "items": "keyfob",
     "NPC": "roy",
     "preReq": null,
-    "fail": true
+    "fail": true,
+    "description": "You're at the break room full of rickety tables and chairs."
   },
   {
     "RoomName": "kitchen",
@@ -131,7 +137,8 @@
     "items": "cake",
     "NPC": null,
     "preReq": "sweater",
-    "fail": true
+    "fail": true,
+    "description": "You're in the kitchen. The smell of stale popcorn wafts through the air."
   },
   {
     "RoomName": "party floor",
@@ -142,7 +149,8 @@
     "items": null,
     "NPC": "brenda",
     "preReq": null,
-    "fail": true
+    "fail": true,
+    "description": "You're at the Party floor. People are crowded at the snack table."
   },
   {
     "RoomName": "table",
@@ -152,7 +160,8 @@
     "items": "mask",
     "NPC": null,
     "preReq": null,
-    "fail": true
+    "fail": true,
+    "description": "You're at the table. It looks picked clean."
   },
   {
     "RoomName": "lobby",
@@ -163,7 +172,8 @@
     "items": null,
     "NPC": null,
     "preReq": null,
-    "fail": true
+    "fail": true,
+    "description": "You're in the lobby. Freedom is so close."
   },
   {
     "RoomName": "vending machine",
@@ -173,6 +183,7 @@
     "items": "raisinets",
     "NPC": null,
     "preReq": "wallet",
-    "fail": true
+    "fail": true,
+    "description": "You're at the vending machine. Its half empty already."
   }
 ]

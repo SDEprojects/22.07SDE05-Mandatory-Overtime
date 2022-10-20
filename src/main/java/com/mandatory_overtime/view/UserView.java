@@ -27,7 +27,6 @@ public class UserView {
     String help = "\nGame Commands:\n"
         + "Go <location>  i.e. 'Go Elevator'\n"
         + "Get <item>     i.e. 'Get Phone'\n"
-        + "Use <item>     i.e. 'Use Mask'\n"
         + "Interact <NPC> i.e. 'Interact Roy'\n"
         + "Inspect <item> i.e. 'Inspect Sweater'\n"
         + "'Look Around' (this will display the room description again)\n"
