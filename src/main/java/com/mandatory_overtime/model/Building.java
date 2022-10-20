@@ -3,6 +3,7 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mandatory_overtime.controller.GamePlay;
+import com.mandatory_overtime.model.exception.IllegalMoveException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -95,14 +96,27 @@ public class Building {
   }
 
 
-  public void moveRooms(String noun) throws IOException {
+  public void moveRooms(String noun) throws IOException, IllegalMoveException {
     String currentLoc = player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
-    for (String direction : directions) {
-      if (noun.equals(direction)) {
-        player.setCurrentLocation(noun);
-//        System.out.println("You are now at the" + noun);
-        getRoomDescriptionInfo();
+    int counter = 0;
+    boolean loopStop = true;
+    while(loopStop) {
+      try {
+        for (String direction : directions) {
+          if (noun.equals(direction)) {
+            player.setCurrentLocation(noun);
+            getRoomDescriptionInfo();
+            loopStop = false;
+          } else {
+            counter++;
+          }
+        }
+        if (counter == directions.length) {
+          loopStop = false;
+          throw new IllegalMoveException(noun);
+        }
+      } catch (IllegalMoveException e) {
       }
     }
   }
