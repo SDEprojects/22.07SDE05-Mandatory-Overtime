@@ -32,8 +32,16 @@ public class GamePlay {
       System.out.println(userView.showHelp());
       //      print game info and username
       System.out.println("What is your name");
+
       String name = inputParser.readLine().trim();
+      String nameTemp;
+      while (name.length() < 1) {
+        nameTemp = inputParser.readLine().trim();
+        name = nameTemp;
+      }
+      building.setName(name);
       System.out.println(userView.startUpInfo(name));
+      building.startingRoomDescription();
       //run printRoomDescription() here to show current room.
     } catch (IOException e) {
       throw new RuntimeException(e);
@@ -94,7 +102,7 @@ public class GamePlay {
         }else if(verb.equals("look")){
           building.getRoomDescriptionInfo();
         }else {
-          System.out.println(userView.incorrectInput() + userView.showHelp());
+          System.out.println(userView.incorrectInput());
         }
       } catch (Exception e) {
         throw new RuntimeException(e);

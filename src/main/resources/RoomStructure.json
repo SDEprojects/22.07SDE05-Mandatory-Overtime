@@ -22,7 +22,7 @@
   {
     "RoomName": "2",
     "directions": [
-      "party room",
+      "party floor",
       "1",
       "3",
       "4",
@@ -170,7 +170,7 @@
     "directions": [
       "lobby"
     ],
-    "items": "raisinettes",
+    "items": "raisinets",
     "NPC": null,
     "preReq": "wallet",
     "fail": true

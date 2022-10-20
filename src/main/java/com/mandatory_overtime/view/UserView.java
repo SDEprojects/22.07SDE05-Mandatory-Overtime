@@ -1,14 +1,10 @@
 package com.mandatory_overtime.view;
 
-import com.mandatory_overtime.model.Building;
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class UserView {
 
   public String startUpInfo(String name) {
 
-    return "Hello " + name + ", \n"
+    return "\nHello " + name + ", \n"
         + "You are a developer for Amazon and it's Halloween night\n"
         + "You have had a long week at the office, but you are diving head first into the weekend\n"
         + "because there's a rooftop Halloween Party tonight!\n\n"
@@ -17,9 +13,7 @@ public class UserView {
         + "your coworker Pete tells you that he has been hearing rumors of Mandatory Overtime.\n\n"
         + "You know that it's your turn to be On-Call this weekend.\n"
         + "Finish your work and escape the building with your things\n"
-        + "before your manager, Scott, finds you and you miss the party tonight.\n";
-
-
+        + "before your manager, Scott, finds you and you miss the party tonight.";
   }
 
   public String startUpTitle() {
@@ -42,7 +36,7 @@ public class UserView {
   }
 
   public String incorrectInput() {
-    return "\nWe don't recognize this command. Please review the game commands for valid inputs.\n";
+    return "\nWe don't recognize this command. Please review the game commands for valid inputs. (type 'help')\n";
   }
 
 
