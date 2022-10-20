@@ -80,7 +80,7 @@ public class GamePlay {
         } else if (verb.equals("quit")) {
           quitMenu();
         } else if (verb.equals("go")) {
-  //       add moveRooms method. Invoke method in building to move(noun)
+          building.moveRooms(noun);
         } else if (verb.equals("get")) {
           building.getItem(noun);
         } else if (verb.equals("interact")) {

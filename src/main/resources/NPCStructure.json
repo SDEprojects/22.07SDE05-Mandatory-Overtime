@@ -1,7 +1,7 @@
 [
   {
     "NpcName": "roy",
-    "location": "3-break room",
+    "location": "break room",
     "initialDialogue": "Howdy, <name>! Ooohweee! I'm struggling today, I forgot to eat breakfast this morning and I have been moving slow all day. I'm waiting on that candy bar you owe me. But, you know what they say, a crocodile don't make no how with the kitchen mop.",
     "dialogueNoItem": "I am starting to believe what they've been saying about you.  I'm sitting here hungry for a candy bar and you aint worth the last thread in a wet sock.  You know the difference between an apple and a car?  Grit...",
     "dialogueWithItem": "<name> I'll tell you what! It's not about the destination. It's about the journey. That's the best <snack> I've had since Momma gave me arthritis. Speaking of, do you mind doing me a favor?  Them fellas up on Dev floor left their key fob for that back room in here. You mind dropping it off for me?",
@@ -11,7 +11,7 @@
   },
   {
     "NpcName": "brenda",
-    "location": "2-party room",
+    "location": "party room",
     "initialDialogue": "<name>, it looks like you were supposed to bring a cake to the potluck!  No cake, no service. Life is but a series of exchanges. A back and forth. An end with no beginning. An endless abyss. And in that abyss, we only ask for cake to ease the pain...",
     "dialogueNoItem": "I still need that cake. We're not doing anything without it! And please, no hair on it this time. You'd think you were a werewolf with the chili you brought last time!\nNow, that you're here we need to have a talk.  You've had 13 complaints from MULTIPLE people in this office.  You are not only a disgrace as an employee, but as a person in general. You're inconsiderate, oblivious, and you smell. You make me sick.",
     "dialogueWithItem": "FINALLY! About time you brought that sweet goodness down here.  By the way,  they changed the pin code to your desk today.  The new code is <pin>.  Try not to be pathetic anymore.",
@@ -21,7 +21,7 @@
   },
   {
     "NpcName": "danny",
-    "location": "4-dev room",
+    "location": "dev room",
     "lobbyDialogue": "*Speaking loudly to senior devs*\nHave you seen the code <name> has been putting out?  There's no way I would attach my name to that kind of script. He must be a vampire because he's sucking out my patience.",
     "partyRoomDialogue": "Brenda, the way these junior developers are writing code is haunting me in my dreams. #FreddyKreuger Just wait until I find %s.",
     "breakRoomDialogue": "Roy, have you seen the way %s has been walking around.  Their career here will be dead soon enough.  They'll be crying for their mummy.",
