@@ -79,7 +79,7 @@
   {
     "item": "keyfob",
     "location": "break room",
-    "purpose": "Hmmmmm... I wander that this key could possibly go to?",
+    "purpose": "It's the keyfob for the IT closet.",
     "npc": true,
     "preReq": null,
     "challenge": false,
@@ -90,7 +90,7 @@
   {
     "item": "badge",
     "location": "it closet",
-    "purpose": "Finally! There you are! Better hurry to my phone!",
+    "purpose": "Finally! You need your badge for the conference room. Better hurry to my phone!",
     "npc": false,
     "preReq": null,
     "challenge": false,
@@ -101,7 +101,7 @@
   {
     "item": "phone",
     "location": "conference room",
-    "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
+    "purpose": "Can't leave without grabbing my phone and turning it off. You can't miss a call-in if you don't get a call-in.",
     "npc": false,
     "preReq": null,
     "challenge": true,

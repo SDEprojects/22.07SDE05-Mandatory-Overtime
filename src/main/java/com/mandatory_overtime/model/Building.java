@@ -3,12 +3,14 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mandatory_overtime.controller.GamePlay;
+import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -93,19 +95,21 @@ public class Building {
   }
 
 
-  public void moveRooms(String noun) {
+  public void moveRooms(String noun) throws IOException {
     String currentLoc = player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
     for (String direction : directions) {
       if (noun.equals(direction)) {
         player.setCurrentLocation(noun);
-        System.out.println("You are now at the" + noun);
+//        System.out.println("You are now at the" + noun);
+//        getRoomDescriptionInfo();
       }
     }
   }
 
 
   public void getItem(String item) throws IOException {
+//    getRoomDescriptionInfo();
     String playerCurrentLocation = player.getCurrentLocation();
 
     //conditional to check if item is in array //check if location correct // check if npc doesn't have it
@@ -134,13 +138,25 @@ public class Building {
 
   }
 
+  public void getAllItems(String noun){
+    if(noun.equals("mode")){
+      for(String itemN : items.keySet()){
+        player.addToInventory(itemN);
+        items.get(itemN).setAcquired(true);
+        items.get(itemN).setChallenge(false);
+        items.get(itemN).setNpc(false);
+        items.get(itemN).setPreReq(null);
+      }
+    }
+
+  }
+
   private void checkItemPreReqIsFulfilled(String item) {
+    //If prereq in player inventory, add to inventory, remove prereq from inventory, set acquired to true.
     if (player.getInventory().contains(items.get(item).getPreReq())) {
       player.addToInventory(item);
       items.get(item).setAcquired(true);
-      player.removeFromInventory(
-          items.get(item).getPreReq()); //removes prereq from player inventory
-      //remove item from list in rooms method.
+      player.removeFromInventory(items.get(item).getPreReq()); //removes prereq from player inventory
 
       System.out.println("Prereq inventory method " + player.getInventory().toString());
 
@@ -159,7 +175,7 @@ public class Building {
     System.out.println(items.get(item).getChallengePrompt());
     String userAnswer = inputParser.readLine().toLowerCase().trim();
 
-    //if user answer correct, add to inventory. Set item challenge to false.
+    //if user answer correct, add to inventory. Set item challenge to false. Set acquired to true.
     if (items.get(item).getChallengeAnswer().equals(userAnswer)) {
       player.addToInventory(item);
       items.get(item).setAcquired(true);
@@ -178,6 +194,18 @@ public class Building {
     }
 
   }
+
+  public void inspectItem(String item){
+    //checks if item exists, if location is correct, if item is held by NPC
+    if(items.containsKey(item) && items.get(item).getLocation().equals(player.getCurrentLocation())
+        && items.get(item).isNpc() == false){
+      System.out.println(items.get(item).getPurpose());
+    }
+  }
+
+
+
+
 
 
   public void interactWithNpc(String noun) {
