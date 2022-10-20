@@ -91,6 +91,8 @@ public class GamePlay {
         }else if(verb.equals("god")){
           //Type "god mode" will add all items to inventory.
           building.getAllItems(noun);
+        }else if(verb.equals("look")){
+          building.getRoomDescriptionInfo();
         }else {
           System.out.println(userView.incorrectInput() + userView.showHelp());
         }
