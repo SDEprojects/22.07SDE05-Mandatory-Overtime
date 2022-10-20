@@ -134,8 +134,32 @@ public class Building {
         checkItemPreReqIsFulfilled(item);
       }
     } else {
-      System.out.println("Dun cant touch this!");
+      System.out.printf("You cannot get %s", item);
     }
+//
+//    if (!items.containsKey((item)) && !items.get(item).getLocation().equals(playerCurrentLocation)
+//        && !items.get(item).isNpc() == false) {
+////      throw new InvalidItemException(String.format("You can't get %s ", item));
+//      String.format("You can't get %s ", item);
+//    }
+//    if (items.get(item).getAcquired() == true) {
+////      throw new ItemAcquiredException(String.format("You've already acquired %s ", item));
+//      String.format("You've already acquired %s ", item);
+//    }
+//    if (items.get(item).getPreReq() == null) {
+//
+//      //conditional to check for challenge
+//      if (items.get(item).getChallenge() == true) {
+//        runItemChallenge(item);
+//      } else {
+//        player.addToInventory(item);
+//        items.get(item).setAcquired(true);
+//        //remove item from list in rooms method
+//        System.out.println(player.getInventory().toString());
+//      }
+//    } else {
+//      checkItemPreReqIsFulfilled(item);
+//    }
 
   }
 
@@ -214,22 +238,25 @@ public class Building {
 
     String inventory = player.getInventory().toString();
     String currentLocation = player.getCurrentLocation();
-    String npc = building.get(currentLocation).getNPC();
-    String item = building.get(currentLocation).getItem();
+    String npc = building.get(currentLocation).getNPC() == null ? "No one is around" : building.get(currentLocation).getNPC();
+    String item = building.get(currentLocation).getItem() == null ? "There are no items" : building.get(currentLocation).getItem();
     String directions = Arrays.toString(building.get(currentLocation).getDirections());
+    String description = building.get(currentLocation).getDescription();
 
     System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
             + "========================================================================================================\n"
             + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
             + "Items in Room: %3$s\n"
             + "========================================================================================================\n"
-            + "You are currently at the %2$S\n"
-            + "You see your coworker %4$s\n"
-            + "You can go the to %5$s\n"
-            + "You see the item, %3$s\n"
+            + "%4$s\n"
+            + "Coworkers in the room: %5$s\n"
+            + "You can go the directions %6$s\n"
+            + "You see the item: %3$s\n"
             + "========================================================================================================\n",
-        inventory, currentLocation, item, npc, directions);
+        inventory, currentLocation, item, description, npc, directions);
+
   }
+
 
   public void startingRoomDescription() {
     String currentLocation = player.getCurrentLocation();
