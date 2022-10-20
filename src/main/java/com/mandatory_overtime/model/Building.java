@@ -3,7 +3,6 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mandatory_overtime.controller.GamePlay;
-import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -229,25 +228,30 @@ public class Building {
 
   public void interactWithNpc(String noun) {
     for (String npc : npcs.keySet()) {
-      if (npc.equals(noun)) {
+      if (npc.equals(noun) && player.getCurrentLocation().equals(npcs.get(npc).getLocation())) {
         if (!player.getInventory().contains(npcs.get(npc).getPrereq())
             && npcs.get(npc).getNpcCount() == 0) {
-          System.out.println(npcs.get(npc).getInitialDialogue());
+          System.out.printf(npcs.get(npc).getInitialDialogue(), player.getName());
           npcs.get(npc).getNpcCount();
         } else if (player.getInventory().contains((npcs.get(npc).getPrereq()))) {
-          System.out.println((npcs.get(npc).getDialogueWithItem()));
+          System.out.printf((npcs.get(npc).getDialogueWithItem()), player.getName());
           player.removeFromInventory((npcs.get(npc).getPrereq()));
           player.addToInventory((npcs.get(npc).getItems()));
           npcs.get(npc).setItems(null);
         } else if ((npcs.get(npc).getItems()) == null) {
-          System.out.println("Go away youngin... I'm busy and have no more business with you!");
+          System.out.printf((npcs.get(npc).getDialogueQuestDone()), player.getName());
         } else if (!player.getInventory().contains((npcs.get(npc).getPrereq()))
             && npcs.get(npc).getNpcCount() >= 1) {
-          System.out.println(npcs.get(npc).getDialogueNoItem());
+          System.out.printf(npcs.get(npc).getDialogueNoItem(), player.getName());
           player.addToInventory(npcs.get(npc).getPrereq());
         }
       }
     }
   }
+
+  public void setName(String name) {
+    player.setName(name);
+  }
+
 
 }

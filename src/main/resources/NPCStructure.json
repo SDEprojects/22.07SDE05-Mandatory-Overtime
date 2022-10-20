@@ -2,21 +2,23 @@
   {
     "NpcName": "roy",
     "location": "break room",
-    "initialDialogue": "Howdy, <name>! Ooohweee! I'm struggling today, I forgot to eat breakfast this morning and I have been moving slow all day. I'm waiting on that candy bar you owe me. But, you know what they say, a crocodile don't make no how with the kitchen mop.",
-    "dialogueNoItem": "I am starting to believe what they've been saying about you.  I'm sitting here hungry for a candy bar and you aint worth the last thread in a wet sock.  You know the difference between an apple and a car?  Grit...",
-    "dialogueWithItem": "<name> I'll tell you what! It's not about the destination. It's about the journey. That's the best <snack> I've had since Momma gave me arthritis. Speaking of, do you mind doing me a favor?  Them fellas up on Dev floor left their key fob for that back room in here. You mind dropping it off for me?",
+    "initialDialogue": "Howdy, %s! Ooohweee! I'm struggling today, I forgot to eat breakfast this morning and I have been moving slow all day. I'm waiting on that candy bar you owe me. But, you know what they say, a crocodile don't make no how with the kitchen mop.",
+    "dialogueNoItem": "I am starting to believe what they've been saying about you, %s.  I'm sitting here hungry for a candy bar and you aint worth the last thread in a wet sock.  You know the difference between an apple and a car?  Grit...",
+    "dialogueWithItem": "%s I'll tell you what! It's not about the destination. It's about the journey. That's the best snack I've had since Momma gave me arthritis. Speaking of, do you mind doing me a favor?  Them fellas up on Dev floor left their key fob for that back room in here. You mind dropping it off for me?",
     "itemsDropped": "keyfob",
     "prereq" : "raisinets",
+    "dialogueQuestDone" : "Go away youngin... I'm busy and have no more business with you!",
     "interactionCount" : 0
   },
   {
     "NpcName": "brenda",
-    "location": "party room",
-    "initialDialogue": "<name>, it looks like you were supposed to bring a cake to the potluck!  No cake, no service. Life is but a series of exchanges. A back and forth. An end with no beginning. An endless abyss. And in that abyss, we only ask for cake to ease the pain...",
-    "dialogueNoItem": "I still need that cake. We're not doing anything without it! And please, no hair on it this time. You'd think you were a werewolf with the chili you brought last time!\nNow, that you're here we need to have a talk.  You've had 13 complaints from MULTIPLE people in this office.  You are not only a disgrace as an employee, but as a person in general. You're inconsiderate, oblivious, and you smell. You make me sick.",
-    "dialogueWithItem": "FINALLY! About time you brought that sweet goodness down here.  By the way,  they changed the pin code to your desk today.  The new code is <pin>.  Try not to be pathetic anymore.",
+    "location": "party floor",
+    "initialDialogue": "%s, it looks like you were supposed to bring a cake to the potluck!  No cake, no service. Life is but a series of exchanges. A back and forth. An end with no beginning. An endless abyss. And in that abyss, we only ask for cake to ease the pain...",
+    "dialogueNoItem": "I still need that cake. We're not doing anything without it! And please, no hair on it this time. You'd think you were a werewolf with the chili you brought last time!\n\nNow, that you're here we need to have a talk. You've had 13 complaints from MULTIPLE people in this office.  You are not only a disgrace as an employee, but as a person in general. You're inconsiderate, oblivious, and you smell. You make me sick %s.",
+    "dialogueWithItem": "FINALLY! About time you brought that sweet goodness down here. By the way, they changed the pin code to your desk today. Here's the new code. Try not to be pathetic anymore.",
     "itemsDropped": "code",
     "prereq" : "cake",
+    "dialogueQuestDone" : "Thanks for the bringing the cake again, I only meant a little bit of what I said earlier, these parties can be stressful to organize sometimes. Have a nice rest of your day!",
     "interactionCount" : 0
   },
   {
