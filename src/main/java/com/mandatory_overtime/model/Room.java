@@ -30,8 +30,6 @@ public class Room {
   private String inventoryAudio;
   @SerializedName("backgroundMusic")
   private Boolean backgroundMusic;
-  @SerializedName("musicOnOff")
-  private Boolean musicOnOff;
   @SerializedName("typingSound")
   private String typingAudio;
   @SerializedName("drawerOpenSound")
@@ -49,13 +47,6 @@ public class Room {
   @SerializedName("phoneUnlockingSound")
   private String phoneUnlockingAudio;
 
-  public Boolean getMusicOnOff() {
-    return musicOnOff;
-  }
-
-  public void setMusicOnOff(Boolean musicOnOff) {
-    this.musicOnOff = musicOnOff;
-  }
   public String getPhoneTypingAudio() {
     return phoneTypingAudio;
   }
