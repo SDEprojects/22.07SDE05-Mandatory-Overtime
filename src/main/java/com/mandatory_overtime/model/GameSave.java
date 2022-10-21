@@ -25,7 +25,16 @@ public class GameSave {
 
   }
 
-  Item item = new Item();
-//  Writer writer = Files.?/
+  private <T> T loadSave(String resourceFile, Gson gson, Type type) throws IOException {
+    //noinspection ConstantConditions
+    try (Reader reader = new InputStreamReader(Thread.currentThread().getContextClassLoader()
+        .getResourceAsStream(resourceFile))) {
+      return gson.fromJson(reader, type);
+
+    }
+
+  }
+
+
 
 }

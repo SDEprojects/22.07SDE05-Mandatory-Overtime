@@ -81,6 +81,7 @@ public class GamePlay {
    */
   public void startGameFromNew() throws IOException {
     building = new Building();
+    building.createGameStructureFromNew();
     try {
       //Ask if user wants to start new game, continue from previous game
 
@@ -114,8 +115,11 @@ public class GamePlay {
    * @throws IOException
    */
   public void startGameFromSaved() throws IOException {
-    System.out.println("method hasn't been created yet.");
-    startGameFromNew();
+    building = new Building();
+    building.createGameStructureFromSave();
+
+    System.out.println("Starting game from save");
+//    startGameFromNew();
   }
 
   /**

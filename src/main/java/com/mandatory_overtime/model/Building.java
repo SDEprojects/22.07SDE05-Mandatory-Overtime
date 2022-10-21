@@ -1,6 +1,7 @@
 package com.mandatory_overtime.model;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
 import com.mandatory_overtime.model.exception.MissingRequirementException;
@@ -9,13 +10,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +33,7 @@ public class Building {
   Player player = new Player();
   public GameState gameState;
 
-  private HashMap<String, Room> building;
+  public static HashMap<String, Room> building;
   private HashMap<String, Item> items;
   private HashMap<String, Npc> npcs;
   private int npcCount = 0;
@@ -44,6 +49,10 @@ public class Building {
    * @throws IOException
    */
   public Building() throws IOException {
+
+  }
+
+  public void createGameStructureFromNew() throws IOException {
     Gson gson = new Gson();
     setGameState(GameState.IN_PROGRESS);
     List<Room> rooms = load("RoomStructure.json", gson, new TypeToken<ArrayList<Room>>() {
@@ -63,8 +72,39 @@ public class Building {
 
     npcs = (HashMap<String, Npc>) npcsArray.stream()
         .collect(Collectors.toMap(Npc::getName, npc -> npc));
-
   }
+
+  public void createGameStructureFromSave() throws IOException {
+    Gson gson = new Gson();
+    setGameState(GameState.IN_PROGRESS);
+    List<Room> rooms = loadSave("RoomStructureSave.json", gson, new TypeToken<ArrayList<Room>>() {
+    }.getType());
+
+    List<Item> itemArray = loadSave("ItemStructureSave.json", gson, new TypeToken<ArrayList<Item>>() {
+    }.getType());
+
+    List<Npc> npcsArray = loadSave("NPCStructureSave.json", gson, new TypeToken<ArrayList<Npc>>() {
+    }.getType());
+
+    //load hashmaps
+    building = (HashMap<String, Room>) rooms.stream().collect(
+        Collectors.toMap(Room::getDisplayName, room -> room));
+
+    items = (HashMap<String, Item>) itemArray.stream()
+        .collect(Collectors.toMap(Item::getName, item -> item));
+
+    npcs = (HashMap<String, Npc>) npcsArray.stream()
+        .collect(Collectors.toMap(Npc::getName, npc -> npc));
+
+    //load player
+    try (Reader reader = new InputStreamReader(
+        getClass().getClassLoader().getResourceAsStream("PlayerSave.json"))) {
+      player = gson.fromJson(reader, Player.class);
+
+    }
+  }
+
+
 
   /**
    * GameSave method to convert current game structure back to JSON objects to load in next game.
@@ -73,57 +113,67 @@ public class Building {
    * @throws IOException
    */
   public void gameSave() throws IOException {
-    System.out.println("This method isn't complete. Game quitting.");
-    quit();
     //save game
+
     //get hashmaps of structures//convert back to Lists<>
     List<Room> roomsSvArr = new ArrayList<Room>(building.values());
     List<Item> itemsSvArr = new ArrayList<>(items.values());
     List<Npc> npcsSvArr = new ArrayList<>(npcs.values());
-    //Convert to JSON
-    //String json = gson.toJson(roomsSvArr);
-    //gson.toJson(roomsSvArr, new FileWriter(filepath)**"RoomStructureSave.json"
-    //writer.close()
-    //Create a new file linked to player name for all. Write to file. Overwrite if already existing.
-    try {
 
-      //create new file if file doesn't already exist.=============
-      File myFile = new File("src/main/resources/ " + "filename" + ".json");
-      if (myFile.createNewFile()) {
-        System.out.println("File created: " + myFile.getName());
-      } else {
-        System.out.println("File already exists.");
-      }
+    //convert structures to saved json files
+    convertSaveDataToJson(roomsSvArr,"RoomStructureSave.json" );
+    convertSaveDataToJson(itemsSvArr, "ItemStructureSave.json");
+    convertSaveDataToJson(npcsSvArr, "NPCStructureSave.json");
+
+    //Write Player obj to Json file
+    convertSavedPlayerToJson(player, "PlayerSave.json");
+
+    //move created files to resources
+//    Files.move()
+    System.out.println("Game saved!");
+  //Will save game then run quit.
+  quit();
+  }
+
+  public void convertSavedPlayerToJson(Player currentPlayer, String filename) throws IOException {
+    try {
+      String filePath = new File(filename).getAbsolutePath();
+
+      Gson gson = new Gson();
+
+      Writer writer = new FileWriter(filePath, false);
+      gson.toJson(currentPlayer, writer);
+
+      writer.close();
+
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (JsonIOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  public void convertSaveDataToJson(List<?> structureArr, String filename ){
+    try {
 
       //Write obj to Json file ==================
       // create GSON instance
       Gson gson = new Gson();
-      //create a writer to write to JSON
-      Writer writer = new FileWriter(myFile, false);
-      // convert map to JSON File
-//      new Gson().toJson(roomsSvArr, writer);
-      gson.toJson(roomsSvArr, writer);
-      // close the writer
-      writer.close();
 
-      //Save player object====================
-      writer = new FileWriter("src/main/resources/" + "playerSave.json", false);
-      gson.toJson(player, writer);
+      //Create writer that access correct file in jar
+      String filePath = new File(filename).getAbsolutePath();
+      Writer writer = new FileWriter(filePath, false);
+
+      // convert list to JSON File
+      gson.toJson(structureArr, writer);
+
+      // close the writer
       writer.close();
 
     } catch (IOException e) {
       e.printStackTrace();
 //      throw new RuntimeException(e);
     }
-
-    //Take player and write to JSON file.
-
-    //in load create new writer
-    //Create new jsonFile
-    //write to new file
-
-    //Will save game then run quit.
-    quit();
   }
 
 //  GETTERS/SETTERS
@@ -139,8 +189,7 @@ public class Building {
 //  HELPER METHODS
 
   /**
-   * Loads in JSON classes to create Java Objects
-   *
+   * Loads in JSON classes from original JSON files create Java structures
    * @param resourceFile
    * @param gson
    * @param type
@@ -154,6 +203,26 @@ public class Building {
         getClass().getClassLoader().getResourceAsStream(resourceFile))) {
       return gson.fromJson(reader, type);
     }
+  }
+
+  /**
+   * Loads JSON classes from saved data to create Java structures
+   * @param resourceFile
+   * @param gson
+   * @param type
+   * @return
+   * @param <T>
+   * @throws IOException
+   */
+  private <T> T loadSave(String resourceFile, Gson gson, Type type) throws IOException {
+    //noinspection ConstantConditions
+    try (Reader reader = new InputStreamReader(
+        getClass().getClassLoader().getResourceAsStream(resourceFile))) {
+      return gson.fromJson(reader, type);
+//Can only use getresourceasstream if data in resource file
+      //Buffered reader can replace this.
+    }
+
   }
 
 //  BUSINESS METHODS
