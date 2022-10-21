@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
  * Building class that creates gameboard to track and update state
  */
@@ -37,8 +38,9 @@ public class Building {
   // Constructor to create structures
 
   /**
-   * Class Constructor. Responsible for creating the Java HashMaps from JSON classes.
-   * Utilizes load() method to do this.
+   * Class Constructor. Responsible for creating the Java HashMaps from JSON classes. Utilizes
+   * load() method to do this.
+   *
    * @throws IOException
    */
   public Building() throws IOException {
@@ -178,7 +180,7 @@ public class Building {
     List<String> inventory = new ArrayList<>();
     inventory = player.getInventory();
     String nextRoomPreReq = building.get(noun).getPreReq();
-    if (nextRoomPreReq==null || inventory.contains(nextRoomPreReq)) {
+    if (nextRoomPreReq == null || inventory.contains(nextRoomPreReq)) {
       int counter = 0;
       boolean loopStop = true;
       while (loopStop) {
@@ -186,15 +188,13 @@ public class Building {
           for (String direction : directions) {
             if (noun.equals(direction)) {
               player.setCurrentLocation(noun);
-              GameMusic.playMoveSound();
+              GameMusic.playMoveSound(noun);
+              GameMusic.playRoomSound(noun);
               getRoomDescriptionInfo();
               if (player.getInventory().contains(building.get(currentLoc).getPreReq())) {
                 GameMusic.playAccessGrantedSound();
                 GameMusic.playDoorOpenSound();
-              } else {
-                GameMusic.playAccessDeniedSound();
               }
-              playRoomSound();
               loopStop = false;
             } else {
               counter++;
@@ -207,11 +207,12 @@ public class Building {
         } catch (IllegalMoveException e) {
         }
       }
-    }else{
+    } else {
       try {
         winGameCheck(noun);
+        GameMusic.playAccessDeniedSound(noun);
         throw new MissingRequirementException(noun);
-      }catch(MissingRequirementException e){
+      } catch (MissingRequirementException e) {
       }
     }
   }
@@ -221,8 +222,8 @@ public class Building {
     String preReqCondition = building.get(noun).getPreReq();
     ArrayList<String> currentItems = (ArrayList<String>) player.getInventory();
     Boolean roomFail = building.get(noun).getFailCondition();
-    if (roomFail== true){
-      if (currentItems.contains(preReqCondition)){
+    if (roomFail == true) {
+      if (currentItems.contains(preReqCondition)) {
         setGameState(GameState.WIN);
       } else {
         setGameState(GameState.LOSS);
@@ -249,6 +250,7 @@ public class Building {
           runItemChallenge(item);
         } else {
           player.addToInventory(item);
+          GameMusic.playItemSound();
           items.get(item).setAcquired(true);
           //remove item from list in rooms method
           System.out.println(items.get(item).getPurpose());
@@ -385,10 +387,13 @@ public class Building {
 
     String inventory = player.getInventory().toString();
     String currentLocation = player.getCurrentLocation();
-    String npc = building.get(currentLocation).getNPC() == null ? "No one is around" : building.get(currentLocation).getNPC();
-    String item = building.get(currentLocation).getItem() == null ? "There are no items" : building.get(currentLocation).getItem();
+    String npc = building.get(currentLocation).getNPC() == null ? "No one is around"
+        : building.get(currentLocation).getNPC();
+    String item = building.get(currentLocation).getItem() == null ? "There are no items"
+        : building.get(currentLocation).getItem();
     String directions = Arrays.toString(building.get(currentLocation).getDirections());
-    String description = building.get(currentLocation).getDescription() == null ? "" : building.get(currentLocation).getDescription();
+    String description = building.get(currentLocation).getDescription() == null ? ""
+        : building.get(currentLocation).getDescription();
 
     System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
             + "========================================================================================================\n"

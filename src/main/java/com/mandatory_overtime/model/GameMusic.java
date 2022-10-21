@@ -66,21 +66,12 @@ public class GameMusic {
     playAudio("Spooky_Music.wav");
   }
 
-  public static void playRoomSound() throws InterruptedException {
-    String currentLoc = player.getCurrentLocation();
-
-    if (building.getBuilding().get(currentLoc).getAudio1() != null) {
-      playAudio(building.getBuilding().get(currentLoc).getAudio1());
-      Thread.sleep(1000);
-      if (building.getBuilding().get(currentLoc).getAudio2() != null) {
-        playAudio(building.getBuilding().get(currentLoc).getAudio2());
-        Thread.sleep(1000);
-      }
-      if (building.getBuilding().get(currentLoc).getAudio3() != null) {
-        playAudio(building.getBuilding().get(currentLoc).getAudio3());
-        Thread.sleep(1000);
-      }
-    }
+  public static void playRoomSound(String noun) throws InterruptedException {
+      playAudio(building.getBuilding().get(noun).getAudio1());
+    Thread.sleep(500);
+    playAudio(building.getBuilding().get(noun).getAudio2());
+    Thread.sleep(1000);
+    playAudio(building.getBuilding().get(noun).getAudio3());
   }
   public static void playItemSound() throws InterruptedException {
     String currentLoc = player.getCurrentLocation();
@@ -90,10 +81,9 @@ public class GameMusic {
     }
   }
 
-  public static void playMoveSound() throws InterruptedException {
-    String currentLoc = player.getCurrentLocation();
-    playAudio(building.getBuilding().get(currentLoc).getFootstepAudio());
-    Thread.sleep(1000);
+  public static void playMoveSound(String noun) throws InterruptedException {
+    playAudio(building.getBuilding().get(noun).getFootstepAudio());
+//    Thread.sleep(250);
   }
 
   public static void playDrawerSound() throws InterruptedException {
@@ -102,9 +92,8 @@ public class GameMusic {
     Thread.sleep(1000);
   }
 
-  public static void playAccessDeniedSound() throws InterruptedException {
-    String currentLoc = player.getCurrentLocation();
-    playAudio(building.getBuilding().get(currentLoc).getAccessDeniedAudio());
+  public static void playAccessDeniedSound(String noun) throws InterruptedException {
+    playAudio(building.getBuilding().get(noun).getAccessDeniedAudio());
     Thread.sleep(1000);
   }
 
