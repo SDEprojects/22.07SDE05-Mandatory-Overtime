@@ -15,7 +15,9 @@ public class GameMusic {
 
   static Boolean musicOnOff = true;
   static Player player = new Player();
-  static Building building;
+//  static Building building;
+static Building building;
+
 
   static {
     try {
@@ -96,6 +98,7 @@ public class GameMusic {
     playAudio(building.getBuilding().get(noun).getAccessDeniedAudio());
     Thread.sleep(1000);
   }
+
 
   public static void playAccessGrantedSound() throws InterruptedException {
     String currentLoc = player.getCurrentLocation();

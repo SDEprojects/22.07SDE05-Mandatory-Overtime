@@ -33,7 +33,7 @@ public class Building {
   Player player = new Player();
   public GameState gameState;
 
-  private HashMap<String, Room> building;
+  public static HashMap<String, Room> building;
   private HashMap<String, Item> items;
   private HashMap<String, Npc> npcs;
   private int npcCount = 0;
