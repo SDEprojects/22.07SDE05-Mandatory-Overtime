@@ -332,6 +332,7 @@ public class Building {
       BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
       //print prompt
       System.out.println(items.get(item).getChallengePrompt());
+      playTypingSound();
       String userAnswer = inputParser.readLine().toLowerCase().trim();
       //if user answer correct, add to inventory. Set item challenge to false. Set acquired to true.
       if (items.get(item).getChallengeAnswer().equals(userAnswer)) {
@@ -489,6 +490,11 @@ public class Building {
   public void playVendingMachineSound() {
     String currentLoc = player.getCurrentLocation();
     music.playAudio(building.get(currentLoc).getVendingMachineAudio());
+  }
+
+  public void playTypingSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getTypingAudio());
   }
 }
 
