@@ -18,14 +18,6 @@ public class Room {
   private Boolean failCondition;
   @SerializedName("description")
   private String description;
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
   @SerializedName("sound1")
   private String audio1;
   @SerializedName("sound2")
@@ -38,9 +30,10 @@ public class Room {
   private String inventoryAudio;
   @SerializedName("backgroundMusic")
   private Boolean backgroundMusic;
+  @SerializedName("musicOnOff")
+  private Boolean musicOnOff;
   @SerializedName("typingSound")
   private String typingAudio;
-
   @SerializedName("drawerOpenSound")
   private String drawerOpenAudio;
   @SerializedName("accessGrantedSound")
@@ -51,7 +44,37 @@ public class Room {
   private String doorOpenAudio;
   @SerializedName("vendingMachineSound")
   private String vendingMachineAudio;
+  @SerializedName("phoneTypingSound")
+  private String phoneTypingAudio;
+  @SerializedName("phoneUnlockingSound")
+  private String phoneUnlockingAudio;
 
+  public Boolean getMusicOnOff() {
+    return musicOnOff;
+  }
+
+  public void setMusicOnOff(Boolean musicOnOff) {
+    this.musicOnOff = musicOnOff;
+  }
+  public String getPhoneTypingAudio() {
+    return phoneTypingAudio;
+  }
+  public void setPhoneTypingAudio(String phoneTypingAudio) {
+    this.phoneTypingAudio = phoneTypingAudio;
+  }
+  public String getPhoneUnlockingAudio() {
+    return phoneUnlockingAudio;
+  }
+  public void setPhoneUnlockingAudio(String phoneUnlockingAudio) {
+    this.phoneUnlockingAudio = phoneUnlockingAudio;
+  }
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
   public String getTypingAudio() {
     return typingAudio;
@@ -76,7 +99,6 @@ public class Room {
   public void setAccessGrantedAudio(String accessGrantedAudio) {
     this.accessGrantedAudio = accessGrantedAudio;
   }
-
   public String getAccessDeniedAudio() {
     return accessDeniedAudio;
   }
@@ -84,7 +106,6 @@ public class Room {
   public void setAccessDeniedAudio(String accessDeniedAudio) {
     this.accessDeniedAudio = accessDeniedAudio;
   }
-
   public String getDoorOpenAudio() {
     return doorOpenAudio;
   }
@@ -124,7 +145,6 @@ public class Room {
   public void setBackgroundMusic(Boolean backgroundMusic) {
     this.backgroundMusic = backgroundMusic;
   }
-
   public String getAudio2() {
     return audio2;
   }
