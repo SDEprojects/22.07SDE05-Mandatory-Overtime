@@ -225,7 +225,6 @@ public class Building {
   }
 
 
-
   public void getItem(String item) throws IOException, InterruptedException {
     getRoomDescriptionInfo();
     String playerCurrentLocation = player.getCurrentLocation();
@@ -233,7 +232,8 @@ public class Building {
     //conditional to check if item is in array //check if location correct // check if npc doesn't have it
 
     if (items.containsKey(item) && items.get(item).getAcquired() == false && items.get(item)
-        .getLocation().equals(playerCurrentLocation) && items.get(item).isNpc() == false) {
+        .getLocation().equals(playerCurrentLocation)
+        && items.get(item).isNpc() == false) {
 
       //conditionals to check it item has prerequisite
       if (items.get(item).getPreReq() == null) {
