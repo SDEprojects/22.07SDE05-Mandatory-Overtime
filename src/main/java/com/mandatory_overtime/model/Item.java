@@ -1,7 +1,6 @@
 package com.mandatory_overtime.model;
 
 import com.google.gson.annotations.SerializedName;
-import javax.swing.SwingContainer;
 
 /**
  * Provides java structure of game Items for imported ItemStructure
