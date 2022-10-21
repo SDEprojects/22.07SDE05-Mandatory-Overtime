@@ -9,6 +9,9 @@ import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GamePlay extends GameMusic {
 
@@ -126,9 +129,28 @@ public class GamePlay extends GameMusic {
       userInputArray = inputParser.readLine().trim().toLowerCase().split(" ", 2);
       verb = userInputArray[0];
       noun = userInputArray[userInputArray.length-1];
+      verb = gameSynonymCommands(verb);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private String gameSynonymCommands(String verb) {
+  String[] getArray = new String[]{"get", "grab", "pick" , "take", "acquire", "obtain", "gain", "acquire", "extract", "capture", "procure", "snag", "fetch"};
+  String[] goArray = new String[]{"go", "move", "travel", "progress", "approach"};
+  String[] interactArray = new String[]{"interact", "confront", "talk", "speak", "collaborate", "fight", "encounter", "converse"};
+  List<String> getList = new ArrayList<>(Arrays.asList(getArray));
+  List<String> goList = new ArrayList<>(Arrays.asList(goArray));
+  List<String> interactList = new ArrayList<>(Arrays.asList(interactArray));
+
+  if(getList.contains(verb)){
+    verb = "get";
+  } else if (goList.contains(verb)){
+    verb = "go";
+  } else if (interactList.contains(verb)) {
+    verb = "interact";
+  }
+    return verb;
   }
 
   /**
@@ -215,4 +237,5 @@ public class GamePlay extends GameMusic {
 
     //State = state.loss
   }
+
 }
