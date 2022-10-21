@@ -7,7 +7,10 @@
       "3",
       "4",
       "5"
-    ]
+    ],
+    "sound1": "Elevator_Ding.wav",
+    "sound2": "Elevator_Door.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "1",
@@ -17,7 +20,10 @@
       "3",
       "4",
       "5"
-    ]
+    ],
+    "sound1": "Elevator_Button.wav",
+    "sound2": "Level1.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "2",
@@ -27,7 +33,10 @@
       "3",
       "4",
       "5"
-    ]
+    ],
+    "sound1": "Elevator_Button.wav",
+    "sound2": "Level2.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "3",
@@ -37,7 +46,10 @@
       "2",
       "4",
       "5"
-    ]
+    ],
+    "sound1": "Elevator_Button.wav",
+    "sound2": "Level3.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "4",
@@ -47,7 +59,10 @@
       "2",
       "3",
       "5"
-    ]
+    ],
+    "sound1": "Elevator_Button.wav",
+    "sound2": "Level4.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "5",
@@ -57,7 +72,10 @@
       "2",
       "3",
       "4"
-    ]
+    ],
+    "sound1": "Elevator_Button.wav",
+    "sound2": "Level5.wav",
+    "sound3": "Elevator_Door.wav"
   },
   {
     "RoomName": "office",
@@ -70,7 +88,10 @@
     "NPC": null,
     "preReq": null,
     "fail": false,
-    "description": "You're at the Office on the 5th floor and feel the darkness encroaching on you, or just the darkmode of your laptop."
+    "description": "You're at the Office on the 5th floor and feel the darkness encroaching on you, or just the darkmode of your laptop.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "typingSound": "Typing.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "desk",
@@ -81,7 +102,10 @@
     "NPC": null,
     "preReq": "code",
     "fail": false,
-    "description": "You're at your messy desk."
+    "description": "You're at your messy desk.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "drawerOpenSound": "Drawer_Open_Close.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "conference room",
@@ -92,7 +116,12 @@
     "NPC": null,
     "preReq": "badge",
     "fail": false,
-    "description": "You're at the Conference Room, it's only you here at the moment."
+    "description": "You're at the Conference Room, it's only you here at the moment.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "accessGrantedSound": "Access_Granted_Beep.wav",
+    "accessDeniedSound": "Access_Denied_Beep.wav",
+    "footstepSound": "Footsteps.wav",
+    "doorOpenSound": "Door_Open.wav"
   },
   {
     "RoomName": "dev floor",
@@ -104,7 +133,9 @@
     "NPC": null,
     "preReq": "mask",
     "fail": true,
-    "description": "You're at the the Dev Floor. A wave of pressure washes over you as you see the professionals at work."
+    "description": "You're at the the Dev Floor. A wave of pressure washes over you as you see the professionals at work.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "it closet",
@@ -115,7 +146,12 @@
     "NPC": null,
     "preReq": "keyfob",
     "fail": false,
-    "description": "You're at the IT Closet. It's hot as you enter the windowless room."
+    "description": "You're at the IT Closet. It's hot as you enter the windowless room.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "accessGrantedSound": "Access_Granted_Beep.wav",
+    "accessDeniedSound": "Access_Denied_Beep.wav",
+    "footstepSound": "Footsteps.wav",
+    "doorOpenSound": "Door_Open.wav"
   },
   {
     "RoomName": "break room",
@@ -127,7 +163,9 @@
     "NPC": "roy",
     "preReq": null,
     "fail": false,
-    "description": "You're at the break room full of rickety tables and chairs."
+    "description": "You're at the break room full of rickety tables and chairs.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "kitchen",
@@ -138,7 +176,9 @@
     "NPC": null,
     "preReq": "sweater",
     "fail": true,
-    "description": "You're in the kitchen. The smell of stale popcorn wafts through the air."
+    "description": "You're in the kitchen. The smell of stale popcorn wafts through the air.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "party floor",
@@ -150,7 +190,9 @@
     "NPC": "brenda",
     "preReq": null,
     "fail": false,
-    "description": "You're at the Party floor. People are crowded at the snack table."
+    "description": "You're at the Party floor. People are crowded at the snack table.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "table",
@@ -161,7 +203,9 @@
     "NPC": null,
     "preReq": null,
     "fail": false,
-    "description": "You're at the table. It looks picked clean."
+    "description": "You're at the table. It looks picked clean.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "lobby",
@@ -174,7 +218,9 @@
     "NPC": null,
     "preReq": null,
     "fail": false,
-    "description": "You're in the lobby. Freedom is so close."
+    "description": "You're in the lobby. Freedom is so close.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "footstepSound": "Footsteps.wav"
   },
   {
     "RoomName": "vending machine",
@@ -185,15 +231,21 @@
     "NPC": null,
     "preReq": "wallet",
     "fail": false,
-    "description": "You're at the vending machine. Its half empty already."
-  },{
-  "RoomName": "building exit",
-  "directions": null,
-  "items": null,
-  "NPC": null,
-  "preReq": "phone",
-  "fail": true,
-  "description": "Congratulations, you have successfully avoided your boss."
-}
+    "description": "You're at the vending machine. Its half empty already.",
+    "inventorySound": "Inventory_Stash_Item.wav",
+    "vendingMachineSound": "Vending_Machine.wav",
+    "footstepSound": "Footsteps.wav"
+  },
+  {
+    "RoomName": "building exit",
+    "directions": null,
+    "items": null,
+    "NPC": null,
+    "preReq": "phone",
+    "fail": true,
+    "description": "Congratulations, you have successfully avoided your boss."
+  }
 
+
+  }
 ]

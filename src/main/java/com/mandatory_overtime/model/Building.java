@@ -28,6 +28,7 @@ public class Building {
 
   Player player = new Player();
   public GameState gameState;
+  GameMusic music = new GameMusic();
   private HashMap<String, Room> building;
   private HashMap<String, Item> items;
   private HashMap<String, Npc> npcs;
@@ -60,10 +61,9 @@ public class Building {
 
     items = (HashMap<String, Item>) itemArray.stream()
         .collect(Collectors.toMap(Item::getName, item -> item));
-//    System.out.println("Item map " + items.get("keyfob").getPreReq());
 
-    npcs = (HashMap<String, Npc>) npcsArray.stream().collect(
-        Collectors.toMap(Npc::getName, npc -> npc));
+    npcs = (HashMap<String, Npc>) npcsArray.stream()
+        .collect(Collectors.toMap(Npc::getName, npc -> npc));
 
 
   }
@@ -155,16 +155,17 @@ public class Building {
         getClass().getClassLoader().getResourceAsStream(resourceFile))) {
       return gson.fromJson(reader, type);
     }
-
   }
 
 //  BUSINESS METHODS
 
-//  public void newGame() throws IOException {
-////    GamePlay restart = new GamePlay();
-////    restart.printGameIntroduction();
-////    restart.gamePlayCommands();
-//  }
+  //
+  public void newGame() throws IOException {
+//    GamePlay restart = new GamePlay();
+    music.startBackgroundMusic();
+//    restart.printGameIntroduction();
+//    restart.gamePlayCommands();
+  }
 
   /**
    * Ends the game completely
@@ -174,7 +175,7 @@ public class Building {
   }
 
 
-  public void moveRooms(String noun) throws IOException, IllegalMoveException {
+  public void moveRooms(String noun) throws IOException, IllegalMoveException, InterruptedException {
     String currentLoc = player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
     boolean condition;
@@ -187,7 +188,15 @@ public class Building {
             if (noun.equals(direction)) {
               winGameCheck(noun);
               player.setCurrentLocation(noun);
+              playMoveSound();
               getRoomDescriptionInfo();
+              if(player.getInventory().contains(building.get(currentLoc).getPreReq())){
+                playAccessGrantedSound();
+                playDoorOpenSound();
+              } else {
+                playAccessDeniedSound();
+              }
+              playRoomSound();
               loopStop = false;
             } else {
                counter++;
@@ -217,15 +226,14 @@ public class Building {
 
 
 
-  public void getItem(String item) throws IOException {
+  public void getItem(String item) throws IOException, InterruptedException {
     getRoomDescriptionInfo();
     String playerCurrentLocation = player.getCurrentLocation();
 
     //conditional to check if item is in array //check if location correct // check if npc doesn't have it
 
     if (items.containsKey(item) && items.get(item).getAcquired() == false && items.get(item)
-        .getLocation().equals(playerCurrentLocation)
-        && items.get(item).isNpc() == false) {
+        .getLocation().equals(playerCurrentLocation) && items.get(item).isNpc() == false) {
 
       //conditionals to check it item has prerequisite
       if (items.get(item).getPreReq() == null) {
@@ -302,6 +310,8 @@ public class Building {
     //If prereq in player inventory, add to inventory, remove prereq from inventory, set acquired to true.
     if (player.getInventory().contains(items.get(item).getPreReq())) {
       player.addToInventory(item);
+      playDrawerSound();
+      playVendingMachineSound();
       items.get(item).setAcquired(true);
       player.removeFromInventory(
           items.get(item).getPreReq()); //removes prereq from player inventory
@@ -311,10 +321,11 @@ public class Building {
     } else {
       System.out.println("You need " + items.get(item).getPreReq() + " to get this item.\n>");
 
+
     }
   }
 
-  private void runItemChallenge(String item) throws IOException {
+  private void runItemChallenge(String item) throws IOException, InterruptedException {
     while (!player.getInventory().contains(item)) {
       //reads input
       BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
@@ -326,7 +337,10 @@ public class Building {
         player.addToInventory(item);
         items.get(item).setAcquired(true);
         items.get(item).setChallenge(false);
-        System.out.println("challenge won inv " + player.getInventory().toString());
+        playItemSound();
+        System.out.println(items.get(item).getPurpose());
+        System.out.println(player.getInventory().toString());
+
       } else {
         System.out.println("Would you like to try again? Enter 'yes' or 'no'.");
         String userAnswer1 = inputParser.readLine().toLowerCase().trim();
@@ -411,7 +425,6 @@ public class Building {
         } else if (!player.getInventory().contains((npcs.get(npc).getPrereq()))
             && npcs.get(npc).getNpcCount() >= 1) {
           System.out.printf(npcs.get(npc).getDialogueNoItem(), player.getName());
-//          player.addToInventory(npcs.get(npc).getPrereq());
         }
       }
     }
@@ -422,4 +435,64 @@ public class Building {
   }
 
 
+  public void playRoomSound() throws InterruptedException {
+    String currentLoc = player.getCurrentLocation();
+
+    if (building.get(currentLoc).getAudio1() != null) {
+      music.playAudio(building.get(currentLoc).getAudio1());
+      Thread.sleep(1000);
+      if (building.get(currentLoc).getAudio2() != null) {
+        music.playAudio(building.get(currentLoc).getAudio2());
+        Thread.sleep(1000);
+      }
+      if (building.get(currentLoc).getAudio3() != null) {
+        music.playAudio(building.get(currentLoc).getAudio3());
+        Thread.sleep(1000);
+      }
+    }
+  }
+
+  public void playItemSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getInventoryAudio());
+  }
+
+  public void playMoveSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getFootstepAudio());
+  }
+
+  public void playDrawerSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getDrawerOpenAudio());
+  }
+
+  public void playAccessDeniedSound() throws InterruptedException {
+    Thread.sleep(1000);
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getAccessDeniedAudio());
+  }
+
+  public void playAccessGrantedSound() throws InterruptedException {
+    Thread.sleep(1000);
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getAccessGrantedAudio());
+
+  }
+  public void playDoorOpenSound() throws InterruptedException {
+    Thread.sleep(1000);
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getDoorOpenAudio());
+  }
+
+  public void playVendingMachineSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getVendingMachineAudio());
+  }
 }
+
+
+
+
+
+

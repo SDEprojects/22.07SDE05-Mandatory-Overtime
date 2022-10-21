@@ -2,13 +2,14 @@
   {
     "item": "laptop",
     "location": "office",
-    "purpose": "Can't leave the office without your laptop",
+    "purpose": "Phew, I couldn't leave the office without my laptop",
     "npc": false,
     "preReq": null,
     "challenge": true,
     "challenge prompt" : "What is wrong with this line of code?",
     "challenge answer": "nothing",
-    "acquired": false
+    "acquired": false,
+    "sound1" : "Inventory_Stash_Item.wav"
   },
   {
     "item": "mask",

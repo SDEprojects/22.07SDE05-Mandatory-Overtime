@@ -26,6 +26,19 @@ public class Item {
   @SerializedName("acquired")
   private Boolean acquired;
 
+
+  @SerializedName("sound1")
+  private String audio1;
+  public String getAudio1() {
+    return audio1;
+  }
+
+  public void setAudio1(String audio1) {
+    this.audio1 = audio1;
+  }
+
+
+
   public Boolean getAcquired() {
     return acquired;
   }
