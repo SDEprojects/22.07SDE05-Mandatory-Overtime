@@ -109,7 +109,8 @@ public class GamePlay {
         throw new RuntimeException(e);
       }
     } while (building.gameState == GameState.IN_PROGRESS) ;//building is updating the state
-      if (building.gameState == GameState.WIN) {
+
+    if (building.gameState == GameState.WIN) {
         System.out.println(userView.showWin());
       } else {
         System.out.println(userView.showLoss());
