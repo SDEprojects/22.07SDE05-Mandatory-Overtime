@@ -312,6 +312,7 @@ public class Building {
       player.addToInventory(item);
       playDrawerSound();
       playVendingMachineSound();
+      playItemSound();
       items.get(item).setAcquired(true);
       player.removeFromInventory(
           items.get(item).getPreReq()); //removes prereq from player inventory
