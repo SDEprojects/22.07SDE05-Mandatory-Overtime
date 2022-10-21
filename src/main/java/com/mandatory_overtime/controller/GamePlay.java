@@ -29,9 +29,6 @@ public class GamePlay extends GameMusic {
     newGame();
   }
 
-  public void startGame() throws IOException, InterruptedException {
-
-    building.newGame();
   /**
    * THIS METHOD STARTS A NEWGAME FROM INTRODUCTION
    * Starts gameIntro and then startmenu() start from new or start from save.
