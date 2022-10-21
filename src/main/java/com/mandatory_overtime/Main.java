@@ -10,7 +10,7 @@ public class Main {
   public static void main(String[] args) throws IOException{
 
     GamePlay gamePlay = new GamePlay();
-    gamePlay.startGame();
+//    gamePlay.startGame();
 
   }
 }
