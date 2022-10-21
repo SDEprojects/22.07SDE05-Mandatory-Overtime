@@ -12,7 +12,7 @@ public class Player {
   private String name;
   private String currentLocation = "office";
   private int failCount;
-  private Timer timer = new Timer();
+//  private Timer timer = new Timer();
 
 
 
@@ -48,13 +48,13 @@ public class Player {
     this.failCount = failCount;
   }
 
-  public Timer getTimer() {
-    return timer;
-  }
-
-  public void setTimer(Timer timer) {
-    this.timer = timer;
-  }
+//  public Timer getTimer() {
+//    return timer;
+//  }
+//
+//  public void setTimer(Timer timer) {
+//    this.timer = timer;
+//  }
 
   /**
    * Adds to inventory for Player

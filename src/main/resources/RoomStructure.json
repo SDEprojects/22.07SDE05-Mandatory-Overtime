@@ -14,6 +14,7 @@
     "preReq": "laptop",
     "fail": false
   },
+
   {
     "RoomName": "1",
     "directions": [
@@ -123,7 +124,9 @@
     "accessGrantedSound": "Access_Granted_Beep.wav",
     "accessDeniedSound": "Access_Denied_Beep.wav",
     "footstepSound": "Footsteps.wav",
-    "doorOpenSound": "Door_Open.wav"
+    "doorOpenSound": "Door_Open.wav",
+    "phoneTypingSound": "Phone_Typing.wav",
+    "phoneUnlockingSound": "Phone_Unlock.wav"
   },
   {
     "RoomName": "dev floor",
@@ -247,7 +250,4 @@
     "fail": true,
     "description": "Congratulations, you have successfully avoided your boss."
   }
-
-
-
 ]

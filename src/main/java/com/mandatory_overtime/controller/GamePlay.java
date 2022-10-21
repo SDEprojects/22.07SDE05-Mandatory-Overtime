@@ -13,12 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GamePlay extends GameMusic {
+public class GamePlay {
 
   public final BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
   public String[] userInputArray;
-
-  GameMusic music = new GameMusic();
 
   Building building;
   UserView userView = new UserView();
@@ -42,7 +40,7 @@ public class GamePlay extends GameMusic {
    */
   public void newGame() throws IOException {
     printGameIntroduction();
-    music.startBackgroundMusic();
+    GameMusic.startBackgroundMusic();
     startMenu();
   }
 
@@ -224,6 +222,8 @@ public class GamePlay extends GameMusic {
           building.getAllItems(noun);
         } else if(verb.equals("look")){
           building.getRoomDescriptionInfo();
+        } else if(verb.equals("music")){
+          GameMusic.musicOnOff(noun);
         } else {
           System.out.println(userView.incorrectInput());
         }
@@ -241,5 +241,4 @@ public class GamePlay extends GameMusic {
 
     //State = state.loss
   }
-
 }
