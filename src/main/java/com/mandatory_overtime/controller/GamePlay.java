@@ -4,6 +4,7 @@ import com.mandatory_overtime.model.Building;
 import com.mandatory_overtime.model.GameMusic;
 import com.mandatory_overtime.model.Player;
 import com.mandatory_overtime.model.GameState;
+
 import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +14,8 @@ public class GamePlay extends GameMusic {
 
   public final BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
   public String[] userInputArray;
+
+  GameMusic music = new GameMusic();
 
   Building building;
   UserView userView = new UserView();
@@ -36,6 +39,7 @@ public class GamePlay extends GameMusic {
    */
   public void newGame() throws IOException {
     printGameIntroduction();
+    music.startBackgroundMusic();
     startMenu();
   }
 

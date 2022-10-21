@@ -2,7 +2,6 @@ package com.mandatory_overtime.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mandatory_overtime.controller.GamePlay;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
 import java.io.BufferedReader;
 import java.io.File;
@@ -162,7 +161,6 @@ public class Building {
   //
   public void newGame() throws IOException {
 //    GamePlay restart = new GamePlay();
-    music.startBackgroundMusic();
 //    restart.printGameIntroduction();
 //    restart.gamePlayCommands();
   }
@@ -225,7 +223,6 @@ public class Building {
   }
 
 
-
   public void getItem(String item) throws IOException, InterruptedException {
     getRoomDescriptionInfo();
     String playerCurrentLocation = player.getCurrentLocation();
@@ -233,7 +230,8 @@ public class Building {
     //conditional to check if item is in array //check if location correct // check if npc doesn't have it
 
     if (items.containsKey(item) && items.get(item).getAcquired() == false && items.get(item)
-        .getLocation().equals(playerCurrentLocation) && items.get(item).isNpc() == false) {
+        .getLocation().equals(playerCurrentLocation)
+        && items.get(item).isNpc() == false) {
 
       //conditionals to check it item has prerequisite
       if (items.get(item).getPreReq() == null) {
@@ -332,6 +330,7 @@ public class Building {
       BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
       //print prompt
       System.out.println(items.get(item).getChallengePrompt());
+      playTypingSound();
       String userAnswer = inputParser.readLine().toLowerCase().trim();
       //if user answer correct, add to inventory. Set item challenge to false. Set acquired to true.
       if (items.get(item).getChallengeAnswer().equals(userAnswer)) {
@@ -489,6 +488,11 @@ public class Building {
   public void playVendingMachineSound() {
     String currentLoc = player.getCurrentLocation();
     music.playAudio(building.get(currentLoc).getVendingMachineAudio());
+  }
+
+  public void playTypingSound() {
+    String currentLoc = player.getCurrentLocation();
+    music.playAudio(building.get(currentLoc).getTypingAudio());
   }
 }
 
