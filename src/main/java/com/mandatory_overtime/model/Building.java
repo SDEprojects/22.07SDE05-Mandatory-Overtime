@@ -3,6 +3,7 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
+import com.mandatory_overtime.model.exception.MissingRequirementException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
@@ -63,7 +64,6 @@ public class Building {
 
     npcs = (HashMap<String, Npc>) npcsArray.stream()
         .collect(Collectors.toMap(Npc::getName, npc -> npc));
-
 
   }
 
@@ -176,19 +176,20 @@ public class Building {
   public void moveRooms(String noun) throws IOException, IllegalMoveException, InterruptedException {
     String currentLoc = player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
-    boolean condition;
-
-        int counter = 0;
-        boolean loopStop = true;
-        while(loopStop) {
+    List<String> inventory = new ArrayList<>();
+    inventory = player.getInventory();
+    String nextRoomPreReq = building.get(noun).getPreReq();
+    if (nextRoomPreReq==null || inventory.contains(nextRoomPreReq)) {
+      int counter = 0;
+      boolean loopStop = true;
+      while (loopStop) {
         try {
           for (String direction : directions) {
             if (noun.equals(direction)) {
-              winGameCheck(noun);
               player.setCurrentLocation(noun);
               playMoveSound();
               getRoomDescriptionInfo();
-              if(player.getInventory().contains(building.get(currentLoc).getPreReq())){
+              if (player.getInventory().contains(building.get(currentLoc).getPreReq())) {
                 playAccessGrantedSound();
                 playDoorOpenSound();
               } else {
@@ -197,7 +198,7 @@ public class Building {
               playRoomSound();
               loopStop = false;
             } else {
-               counter++;
+              counter++;
             }
           }
           if (counter == directions.length) {
@@ -205,15 +206,23 @@ public class Building {
             throw new IllegalMoveException(noun);
           }
         } catch (IllegalMoveException e) {
-          }
         }
+      }
+    }else{
+      try {
+        winGameCheck(noun);
+        throw new MissingRequirementException(noun);
+      }catch(MissingRequirementException e){
+      }
+    }
   }
 
   private void winGameCheck(String noun) {
     boolean wonGame = false;
-    String preReqCondition = building.get("building exit").getPreReq();
+    String preReqCondition = building.get(noun).getPreReq();
     ArrayList<String> currentItems = (ArrayList<String>) player.getInventory();
-    if (noun.equals("building exit")){
+    Boolean roomFail = building.get(noun).getFailCondition();
+    if (roomFail== true){
       if (currentItems.contains(preReqCondition)){
         setGameState(GameState.WIN);
       }else{

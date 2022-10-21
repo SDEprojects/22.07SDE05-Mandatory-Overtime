@@ -10,7 +10,9 @@
     ],
     "sound1": "Elevator_Ding.wav",
     "sound2": "Elevator_Door.wav",
-    "sound3": "Elevator_Door.wav"
+    "sound3": "Elevator_Door.wav",
+    "preReq": "laptop",
+    "fail": false
   },
   {
     "RoomName": "1",
