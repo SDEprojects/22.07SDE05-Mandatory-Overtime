@@ -69,7 +69,7 @@
     "items": "laptop",
     "NPC": null,
     "preReq": null,
-    "fail": true,
+    "fail": false,
     "description": "You're at the Office on the 5th floor and feel the darkness encroaching on you, or just the darkmode of your laptop."
   },
   {
@@ -80,7 +80,7 @@
     "items": "wallet",
     "NPC": null,
     "preReq": "code",
-    "fail": true,
+    "fail": false,
     "description": "You're at your messy desk."
   },
   {
@@ -91,7 +91,7 @@
     "items": "phone",
     "NPC": null,
     "preReq": "badge",
-    "fail": true,
+    "fail": false,
     "description": "You're at the Conference Room, it's only you here at the moment."
   },
   {
@@ -126,7 +126,7 @@
     "items": "keyfob",
     "NPC": "roy",
     "preReq": null,
-    "fail": true,
+    "fail": false,
     "description": "You're at the break room full of rickety tables and chairs."
   },
   {
@@ -149,7 +149,7 @@
     "items": null,
     "NPC": "brenda",
     "preReq": null,
-    "fail": true,
+    "fail": false,
     "description": "You're at the Party floor. People are crowded at the snack table."
   },
   {
@@ -160,19 +160,20 @@
     "items": "mask",
     "NPC": null,
     "preReq": null,
-    "fail": true,
+    "fail": false,
     "description": "You're at the table. It looks picked clean."
   },
   {
     "RoomName": "lobby",
     "directions": [
       "elevator",
-      "vending machine"
+      "vending machine",
+      "building exit"
     ],
     "items": null,
     "NPC": null,
     "preReq": null,
-    "fail": true,
+    "fail": false,
     "description": "You're in the lobby. Freedom is so close."
   },
   {
@@ -183,7 +184,16 @@
     "items": "raisinets",
     "NPC": null,
     "preReq": "wallet",
-    "fail": true,
+    "fail": false,
     "description": "You're at the vending machine. Its half empty already."
-  }
+  },{
+  "RoomName": "building exit",
+  "directions": null,
+  "items": null,
+  "NPC": null,
+  "preReq": "phone",
+  "fail": true,
+  "description": "Congratulations, you have successfully avoided your boss."
+}
+
 ]

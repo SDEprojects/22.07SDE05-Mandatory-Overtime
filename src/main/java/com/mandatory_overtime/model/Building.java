@@ -24,7 +24,7 @@ public class Building {
 //  FIELDS
 
   Player player = new Player();
-  private boolean gameState;
+  public GameState gameState;
   private HashMap<String, Room> building;
   private HashMap<String, Item> items;
   private HashMap<String, Npc> npcs;
@@ -35,7 +35,7 @@ public class Building {
   // Constructor to create structures
   public Building() throws IOException {
     Gson gson = new Gson();
-    setGameState(GameState.IN_PROGRESS.isTerminal());
+    setGameState(GameState.IN_PROGRESS);
     List<Room> rooms = load("RoomStructure.json", gson, new TypeToken<ArrayList<Room>>() {
     }.getType());
 
@@ -50,7 +50,7 @@ public class Building {
 
     items = (HashMap<String, Item>) itemArray.stream()
         .collect(Collectors.toMap(Item::getName, item -> item));
-    System.out.println("Item map " + items.get("keyfob").getPreReq());
+//    System.out.println("Item map " + items.get("keyfob").getPreReq());
 
     npcs = (HashMap<String, Npc>) npcsArray.stream().collect(
         Collectors.toMap(Npc::getName, npc -> npc));
@@ -59,11 +59,11 @@ public class Building {
 
 //  GETTERS/SETTERS
 
-  public boolean getGameState() {
+  public GameState getGameState() {
     return gameState;
   }
 
-  public void setGameState(boolean gameState) {
+  public void setGameState(GameState gameState) {
     this.gameState = gameState;
   }
 
@@ -99,27 +99,44 @@ public class Building {
   public void moveRooms(String noun) throws IOException, IllegalMoveException {
     String currentLoc = player.getCurrentLocation();
     String[] directions = building.get(currentLoc).getDirections();
-    int counter = 0;
-    boolean loopStop = true;
-    while(loopStop) {
-      try {
-        for (String direction : directions) {
-          if (noun.equals(direction)) {
-            player.setCurrentLocation(noun);
-            getRoomDescriptionInfo();
+    boolean condition;
+
+        int counter = 0;
+        boolean loopStop = true;
+        while(loopStop) {
+        try {
+          for (String direction : directions) {
+            if (noun.equals(direction)) {
+              winGameCheck(noun);
+              player.setCurrentLocation(noun);
+              getRoomDescriptionInfo();
+              loopStop = false;
+            } else {
+               counter++;
+            }
+          }
+          if (counter == directions.length) {
             loopStop = false;
-          } else {
-            counter++;
+            throw new IllegalMoveException(noun);
+          }
+        } catch (IllegalMoveException e) {
           }
         }
-        if (counter == directions.length) {
-          loopStop = false;
-          throw new IllegalMoveException(noun);
-        }
-      } catch (IllegalMoveException e) {
+  }
+
+  private void winGameCheck(String noun) {
+    boolean wonGame = false;
+    String preReqCondition = building.get("building exit").getPreReq();
+    ArrayList<String> currentItems = (ArrayList<String>) player.getInventory();
+    if (noun.equals("building exit")){
+      if (currentItems.contains(preReqCondition)){
+        setGameState(GameState.WIN);
+      }else{
+        setGameState(GameState.LOSS);
       }
     }
   }
+
 
 
   public void getItem(String item) throws IOException {
@@ -185,7 +202,14 @@ public class Building {
         items.get(itemN).setChallenge(false);
         items.get(itemN).setNpc(false);
         items.get(itemN).setPreReq(null);
+
       }
+    }
+    if(noun.contains("move")){
+      String[] newNoun = noun.split(" ",2);
+      String loc = newNoun[newNoun.length-1];
+      player.setCurrentLocation(loc);
+      getRoomDescriptionInfo();
     }
 
   }

@@ -1,6 +1,7 @@
 package com.mandatory_overtime.controller;
 
 import com.mandatory_overtime.model.Building;
+import com.mandatory_overtime.model.GameState;
 import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -107,8 +108,14 @@ public class GamePlay {
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
+    } while (building.gameState == GameState.IN_PROGRESS) ;//building is updating the state
 
-    } while (!building.getGameState());//building is updating the state
+    if (building.gameState == GameState.WIN) {
+        System.out.println(userView.showWin());
+      } else {
+        System.out.println(userView.showLoss());
+      }
+
     //State = state.loss
   }
 }
