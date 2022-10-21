@@ -1,19 +1,23 @@
 package com.mandatory_overtime.controller;
 
 import com.mandatory_overtime.model.Building;
+import com.mandatory_overtime.model.GameMusic;
+import com.mandatory_overtime.model.Player;
 import com.mandatory_overtime.model.GameState;
 import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class GamePlay {
+public class GamePlay extends GameMusic {
 
   public final BufferedReader inputParser = new BufferedReader(new InputStreamReader(System.in));
   public String[] userInputArray;
 
   Building building;
   UserView userView = new UserView();
+
+ Player player = new Player();
   private String verb;
   private String noun;
 
@@ -127,7 +131,7 @@ public class GamePlay {
    * Quit menu parser that gives different options and sends methods.
    * @throws IOException
    */
-  public void quitMenu() throws IOException {
+  public void quitMenu() throws IOException, InterruptedException {
 //    this prompts user whether they want to quit continue or new game
     System.out.println(
         "Are you sure you would like to quit, save & quit, start a new game or continue your game? \n(Enter: 'quit', 'save quit', 'new game', or 'continue game')");
@@ -185,12 +189,12 @@ public class GamePlay {
           building.interactWithNpc(noun);
         } else if (verb.equals("inspect")){
           building.inspectItem(noun);
-        }else if(verb.equals("god")){
+        } else if(verb.equals("god")){
           //Type "god mode" will add all items to inventory.
           building.getAllItems(noun);
-        }else if(verb.equals("look")){
+        } else if(verb.equals("look")){
           building.getRoomDescriptionInfo();
-        }else {
+        } else {
           System.out.println(userView.incorrectInput());
         }
       } catch (Exception e) {
