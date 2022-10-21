@@ -2,7 +2,6 @@ package com.mandatory_overtime.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mandatory_overtime.controller.GamePlay;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
 import java.io.BufferedReader;
 import java.io.File;
@@ -162,7 +161,6 @@ public class Building {
   //
   public void newGame() throws IOException {
 //    GamePlay restart = new GamePlay();
-    music.startBackgroundMusic();
 //    restart.printGameIntroduction();
 //    restart.gamePlayCommands();
   }
