@@ -75,6 +75,7 @@ public class Building {
    * @throws IOException
    */
   public void gameSave() throws IOException {
+    System.out.println("This method isn't complete. Game quitting.");
     quit();
     //save game
     //get hashmaps of structures//convert back to Lists<>

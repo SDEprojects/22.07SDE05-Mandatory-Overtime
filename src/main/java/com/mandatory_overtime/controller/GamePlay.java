@@ -147,9 +147,27 @@ public class GamePlay {
   }
 
   /**
+   * Method for menu to show after player loses game.
+   * @throws IOException
+   */
+  public void gameLoseMenu() throws IOException {
+    do {
+      System.out.println(
+          "Would you like to start a new game or quit? \n"
+              + "(Enter: 'new game', 'quit')");
+      gamePlayParser();
+      if (verb.equals("quit")) {
+        building.quit();
+      } else if (verb.equals("new")) {
+        newGame(); //building.newGame();
+      }
+    } while (true);
+  }
+
+  /**
    * Takes user input to run game
    */
-  public void gamePlayCommands() {
+  public void gamePlayCommands() throws IOException {
 //this parses commands to controller and view using conditionals
     do {
 
@@ -184,6 +202,7 @@ public class GamePlay {
         System.out.println(userView.showWin());
       } else {
         System.out.println(userView.showLoss());
+        gameLoseMenu();
       }
 
     //State = state.loss
