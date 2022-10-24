@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class GameMusic {
 
   private static Clip clip;
-  static Boolean musicOnOff = false;
+  static Boolean musicOnOff = true;
   static Player player = new Player();
 //  static Building building;
 static Building building;
@@ -61,12 +61,14 @@ static Building building;
   }
 
   public static void musicOnOff(String noun) {
-    if (musicOnOff && noun.equals("off")) {
+    if (noun.equals("off")) {
       clip.stop();
-      setMusicOnOff(false);
-    } else if (!musicOnOff && noun.equals("on")) {
+      clip.flush();
+    }
+    if (noun.equals("on")) {
+      clip.stop();
+      clip.flush();
       startBackgroundMusic();
-      setMusicOnOff(true);
     }
   }
 
@@ -85,9 +87,8 @@ static Building building;
 
 
   public static void startBackgroundMusic() {
-    if (musicOnOff) {
+    if (musicOnOff == false) {
       clip.stop();
-      setMusicOnOff(false);
       playAudioMusic("Spooky_Music.wav");
       setMusicOnOff(true);
       FloatControl gainControl =
@@ -95,7 +96,7 @@ static Building building;
       gainControl.setValue(-9.0f);
     } else {
       playAudioMusic("Spooky_Music.wav");
-      setMusicOnOff(true);
+      setMusicOnOff(false);
       FloatControl gainControl =
           (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
       gainControl.setValue(-9.0f);

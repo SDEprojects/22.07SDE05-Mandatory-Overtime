@@ -227,7 +227,7 @@
     "directions": [
       "elevator",
       "vending machine",
-      "building exit"
+      "home"
     ],
     "items": null,
     "NPC": null,
