@@ -24,6 +24,8 @@
       "4",
       "5"
     ],
+    "preReq": null,
+    "fail": false,
     "sound1": "Elevator_Button.wav",
     "sound2": "Level1.wav",
     "sound3": "Elevator_Door.wav"
@@ -37,6 +39,8 @@
       "4",
       "5"
     ],
+    "preReq": null,
+    "fail": false,
     "sound1": "Elevator_Button.wav",
     "sound2": "Level2.wav",
     "sound3": "Elevator_Door.wav"
@@ -50,6 +54,8 @@
       "4",
       "5"
     ],
+    "preReq": null,
+    "fail": false,
     "sound1": "Elevator_Button.wav",
     "sound2": "Level3.wav",
     "sound3": "Elevator_Door.wav"
@@ -63,6 +69,8 @@
       "3",
       "5"
     ],
+    "preReq": null,
+    "fail": false,
     "sound1": "Elevator_Button.wav",
     "sound2": "Level4.wav",
     "sound3": "Elevator_Door.wav"
@@ -76,6 +84,8 @@
       "3",
       "4"
     ],
+    "preReq": null,
+    "fail": false,
     "sound1": "Elevator_Button.wav",
     "sound2": "Level5.wav",
     "sound3": "Elevator_Door.wav"

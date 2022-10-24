@@ -105,7 +105,7 @@ public class GamePlay {
       System.out.println(userView.startUpInfo(name));
 
       //run printRoomDescription() here to show current room.
-      building.getRoomDescriptionInfo();
+      building.startingRoomDescription();
 
       //start game loop
       gamePlayCommands();
@@ -124,7 +124,7 @@ public class GamePlay {
     building = new Building();
     building.createGameStructureFromSave();
     //run printRoomDescription() here to show current room.
-    building.getRoomDescriptionInfo();
+    building.startingRoomDescription();
     System.out.printf("Welcome back %s \n>", building.getName());
     //start game loop
     gamePlayCommands();
