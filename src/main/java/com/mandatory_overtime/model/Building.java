@@ -257,6 +257,7 @@ public class Building {
           for (String direction : directions) {
             if (noun.equals(direction)) {
               player.setCurrentLocation(noun);
+              winGameCheck(noun);
               GameMusic.playMoveSound(noun);
               GameMusic.playRoomSound(noun);
               getRoomDescriptionInfo();
@@ -295,6 +296,7 @@ public class Building {
       if (currentItems.contains(preReqCondition)) {
         setGameState(GameState.WIN);
       } else {
+        System.out.println("You were found and assigned to overtime!!! Before entering this room you need " + preReqCondition.toUpperCase()+"." );
         setGameState(GameState.LOSS);
       }
     }

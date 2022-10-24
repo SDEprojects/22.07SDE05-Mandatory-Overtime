@@ -242,7 +242,7 @@
     "footstepSound": "Footsteps.wav"
   },
   {
-    "RoomName": "building exit",
+    "RoomName": "home",
     "directions": null,
     "items": null,
     "NPC": null,

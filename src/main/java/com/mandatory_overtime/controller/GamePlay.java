@@ -138,8 +138,8 @@ public class GamePlay {
   }
 
   private String gameSynonymCommands(String verb) {
-  String[] getArray = new String[]{"get", "grab", "pick" , "take", "acquire", "obtain", "gain", "acquire", "extract", "capture", "procure", "snag", "fetch"};
-  String[] goArray = new String[]{"go", "move", "travel", "progress","proceed"};
+  String[] getArray = new String[]{"get", "grab", "pick" , "take", "acquire", "obtain", "gain", "acquire", "extract", "capture", "procure", "snag", "fetch", "buy", "purchase"};
+  String[] goArray = new String[]{"go", "move", "travel", "progress","proceed", "enter"};
   String[] interactArray = new String[]{"interact", "confront", "talk", "speak", "collaborate", "fight", "encounter", "converse", "approach"};
   String[] quitArray = new String[] {"quit", "exit", "leave", "stop", "escape"};
   List<String> getList = new ArrayList<>(Arrays.asList(getArray));
