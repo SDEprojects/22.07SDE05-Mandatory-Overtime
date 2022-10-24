@@ -254,50 +254,103 @@ public class Building {
   }
 
 
-  public void moveRooms(String noun)
-      throws IOException, IllegalMoveException, InterruptedException {
-    String currentLoc = player.getCurrentLocation();
-    String[] directions = building.get(currentLoc).getDirections();
-    List<String> inventory = new ArrayList<>();
-    inventory = player.getInventory();
-    String nextRoomPreReq = building.get(noun).getPreReq();
-    if (nextRoomPreReq == null || inventory.contains(nextRoomPreReq)) {
-      int counter = 0;
-      boolean loopStop = true;
-      while (loopStop) {
-        try {
-          for (String direction : directions) {
-            if (noun.equals(direction)) {
-              player.setCurrentLocation(noun);
-              winGameCheck(noun);
-              GameMusic.playMoveSound(noun);
-              GameMusic.playRoomSound(noun);
-              getRoomDescriptionInfo();
-              if (player.getInventory().contains(building.get(currentLoc).getPreReq())) {
-                GameMusic.playAccessGrantedSound();
-                GameMusic.playDoorOpenSound();
+//  public void moveRooms(String noun)
+//      throws IOException, IllegalMoveException, InterruptedException {
+//    String currentLoc = player.getCurrentLocation();
+//    String[] directions = building.get(currentLoc).getDirections();
+//    List<String> inventory = new ArrayList<>();
+//    inventory = player.getInventory();
+//    String nextRoomPreReq = building.get(noun).getPreReq();
+//    if (nextRoomPreReq == null || inventory.contains(nextRoomPreReq)) {
+//      int counter = 0;
+//      boolean loopStop = true;
+//      while (loopStop) {
+//        try {
+//          for (String direction : directions) {
+//            if (noun.equals(direction)) {
+//              player.setCurrentLocation(noun);
+//              winGameCheck(noun);
+//              GameMusic.playMoveSound(noun);
+//              GameMusic.playRoomSound(noun);
+//              getRoomDescriptionInfo();
+//              if (player.getInventory().contains(building.get(currentLoc).getPreReq())) {
+//                GameMusic.playAccessGrantedSound();
+//                GameMusic.playDoorOpenSound();
+//              }
+//              loopStop = false;
+//            } else {
+//              counter++;
+//            }
+//          }
+//          if (counter == directions.length) {
+//            loopStop = false;
+//            throw new IllegalMoveException(noun);
+//          }
+//        } catch (IllegalMoveException e) {
+//        }
+//      }
+//    } else {
+//      try {
+//        winGameCheck(noun);
+//        GameMusic.playAccessDeniedSound(noun);
+//        throw new MissingRequirementException(noun);
+//      } catch (MissingRequirementException e) {
+//      }
+//    }
+//  }
+public void moveRooms(String noun)
+    throws IOException, IllegalMoveException, InterruptedException {
+  String currentLoc = player.getCurrentLocation();
+  String[] directions = building.get(currentLoc).getDirections();
+  List<String> directionsList = new ArrayList<>(Arrays.asList(directions));
+  List<String> inventory = new ArrayList<>();
+  inventory = player.getInventory();
+  String nextRoomPreReq = "";
+  try {
+    if (!directionsList.contains(noun)) {
+      throw new IllegalMoveException(noun);
+    } else {
+      nextRoomPreReq = building.get(noun).getPreReq();
+      if (nextRoomPreReq == null || inventory.contains(nextRoomPreReq)) {
+        int counter = 0;
+        boolean loopStop = true;
+        while (loopStop) {
+          try {
+            for (String direction : directions) {
+              if (noun.equals(direction)) {
+                player.setCurrentLocation(noun);
+                winGameCheck(noun);
+                GameMusic.playMoveSound(noun);
+                GameMusic.playRoomSound(noun);
+                getRoomDescriptionInfo();
+                if (player.getInventory().contains(building.get(currentLoc).getPreReq())) {
+                  GameMusic.playAccessGrantedSound();
+                  GameMusic.playDoorOpenSound();
+                }
+                loopStop = false;
+              } else {
+                counter++;
               }
-              loopStop = false;
-            } else {
-              counter++;
             }
+            if (counter == directions.length) {
+              loopStop = false;
+              throw new IllegalMoveException(noun);
+            }
+          } catch (IllegalMoveException e) {
           }
-          if (counter == directions.length) {
-            loopStop = false;
-            throw new IllegalMoveException(noun);
-          }
-        } catch (IllegalMoveException e) {
+        }
+      } else {
+        try {
+          winGameCheck(noun);
+          GameMusic.playAccessDeniedSound(noun);
+          throw new MissingRequirementException(noun);
+        } catch (MissingRequirementException e) {
         }
       }
-    } else {
-      try {
-        winGameCheck(noun);
-        GameMusic.playAccessDeniedSound(noun);
-        throw new MissingRequirementException(noun);
-      } catch (MissingRequirementException e) {
-      }
     }
+  } catch (IllegalArgumentException e) {
   }
+}
 
   private void winGameCheck(String noun) {
     boolean wonGame = false;
@@ -478,7 +531,7 @@ public class Building {
     String description = building.get(currentLocation).getDescription() == null ? ""
         : building.get(currentLocation).getDescription();
 
-    System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
             + "========================================================================================================\n"
             + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
             + "Items in Room: %3$s\n"
