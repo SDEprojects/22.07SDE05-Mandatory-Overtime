@@ -102,7 +102,7 @@ public class GamePlay {
       System.out.println(userView.startUpInfo(name));
 
       //run printRoomDescription() here to show current room.
-      building.startingRoomDescription();
+      building.getRoomDescriptionInfo();
 
       //start game loop
       gamePlayCommands();
