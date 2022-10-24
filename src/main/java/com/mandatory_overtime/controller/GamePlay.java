@@ -9,6 +9,7 @@ import com.mandatory_overtime.view.UserView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class GamePlay {
    * Constructor for Gameplay that starts newGame();
    * @throws IOException
    */
-  public GamePlay() throws IOException {
+  public GamePlay() throws IOException, URISyntaxException {
     newGame();
   }
 
@@ -38,7 +39,7 @@ public class GamePlay {
    * Starts gameIntro and then startmenu() start from new or start from save.
    * @throws IOException
    */
-  public void newGame() throws IOException {
+  public void newGame() throws IOException, URISyntaxException {
     printGameIntroduction();
     GameMusic.startBackgroundMusic();
     startMenu();
@@ -57,7 +58,7 @@ public class GamePlay {
    * Asks if user wants to start game from new or game from previous game
    * @throws IOException
    */
-  public void startMenu() throws IOException {
+  public void startMenu() throws IOException, URISyntaxException {
     System.out.println("\n-------------------------------------Game Menu---------------------------------------------\n"
         + "Would you like to start a 'new game' or 'previous game'?\n"
         + "(Enter: 'new' or 'previous')\n");
@@ -101,25 +102,29 @@ public class GamePlay {
       System.out.println(userView.startUpInfo(name));
 
       //run printRoomDescription() here to show current room.
-      building.startingRoomDescription();
+      building.getRoomDescriptionInfo();
 
       //start game loop
       gamePlayCommands();
     } catch (IOException e) {
       throw new RuntimeException(e);
+    } catch (URISyntaxException e) {
+      throw new RuntimeException(e);
     }
   }
 
   /**
-   * Starts game from saved (not complete)
+   * Starts game from saved
    * @throws IOException
    */
-  public void startGameFromSaved() throws IOException {
+  public void startGameFromSaved() throws IOException, URISyntaxException {
     building = new Building();
     building.createGameStructureFromSave();
-
-    System.out.println("Starting game from save");
-//    startGameFromNew();
+    //run printRoomDescription() here to show current room.
+    building.getRoomDescriptionInfo();
+    System.out.printf("Welcome back %s \n>", building.getName());
+    //start game loop
+    gamePlayCommands();
   }
 
   /**
@@ -163,7 +168,7 @@ public class GamePlay {
    * Quit menu parser that gives different options and sends methods.
    * @throws IOException
    */
-  public void quitMenu() throws IOException, InterruptedException {
+  public void quitMenu() throws IOException, InterruptedException, URISyntaxException {
 //    this prompts user whether they want to quit continue or new game
     System.out.println(
         "Are you sure you would like to quit, save & quit, start a new game or continue your game? \n(Enter: 'quit', 'save quit', 'new game', or 'continue game')");
@@ -186,7 +191,7 @@ public class GamePlay {
    * Method for menu to show after player loses game.
    * @throws IOException
    */
-  public void gameLoseMenu() throws IOException {
+  public void gameLoseMenu() throws IOException, URISyntaxException {
     do {
       System.out.println(
           "Would you like to start a new game or quit? \n"
@@ -195,7 +200,7 @@ public class GamePlay {
       if (verb.equals("quit")) {
         building.quit();
       } else if (verb.equals("new")) {
-        newGame(); //building.newGame();
+        newGame();
       }
     } while (true);
   }
@@ -203,7 +208,7 @@ public class GamePlay {
   /**
    * Takes user input to run game
    */
-  public void gamePlayCommands() throws IOException {
+  public void gamePlayCommands() throws IOException, URISyntaxException {
 //this parses commands to controller and view using conditionals
     do {
 

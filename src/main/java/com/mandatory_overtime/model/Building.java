@@ -3,24 +3,26 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
+import com.mandatory_overtime.controller.GamePlay;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
 import com.mandatory_overtime.model.exception.MissingRequirementException;
+import com.mandatory_overtime.model.exception.NoSavedGame;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -74,7 +76,7 @@ public class Building {
         .collect(Collectors.toMap(Npc::getName, npc -> npc));
   }
 
-  public void createGameStructureFromSave() throws IOException {
+  public void createGameStructureFromSave() throws IOException, URISyntaxException {
     Gson gson = new Gson();
     setGameState(GameState.IN_PROGRESS);
     List<Room> rooms = loadSave("RoomStructureSave.json", gson, new TypeToken<ArrayList<Room>>() {
@@ -97,10 +99,14 @@ public class Building {
         .collect(Collectors.toMap(Npc::getName, npc -> npc));
 
     //load player
-    try (Reader reader = new InputStreamReader(
-        getClass().getClassLoader().getResourceAsStream("PlayerSave.json"))) {
+    URL url = Building.class.getProtectionDomain().getCodeSource().getLocation();
+    File jar = new File(url.toURI());
+    File f = new File(jar.getParent(), "PlayerSave.json");
+    try (Reader reader = new InputStreamReader(new FileInputStream(f))) {
       player = gson.fromJson(reader, Player.class);
 
+    }catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
@@ -198,7 +204,7 @@ public class Building {
    * @throws IOException
    */
   private <T> T load(String resourceFile, Gson gson, Type type) throws IOException {
-    //noinspection ConstantConditions
+
     try (Reader reader = new InputStreamReader(
         getClass().getClassLoader().getResourceAsStream(resourceFile))) {
       return gson.fromJson(reader, type);
@@ -214,25 +220,31 @@ public class Building {
    * @param <T>
    * @throws IOException
    */
-  private <T> T loadSave(String resourceFile, Gson gson, Type type) throws IOException {
-    //noinspection ConstantConditions
-    try (Reader reader = new InputStreamReader(
-        getClass().getClassLoader().getResourceAsStream(resourceFile))) {
-      return gson.fromJson(reader, type);
-//Can only use getresourceasstream if data in resource file
-      //Buffered reader can replace this.
+  private <T> T loadSave(String resourceFile, Gson gson, Type type)
+      throws IOException, URISyntaxException {
+
+    URL url = Building.class.getProtectionDomain().getCodeSource().getLocation();
+    File jar = new File(url.toURI());
+    File f = new File(jar.getParent(), resourceFile);
+
+    try {
+      if(f.exists()){
+        Reader reader = new InputStreamReader(new FileInputStream(f));
+
+        return gson.fromJson(reader, type);
+      }else{
+        throw new NoSavedGame();
+      }
+
+    }catch (FileNotFoundException e){
     }
 
+    new GamePlay().startGameFromNew();
+    return null; //Start new game method here?
   }
+
 
 //  BUSINESS METHODS
-
-  //
-  public void newGame() throws IOException {
-//    GamePlay restart = new GamePlay();
-//    restart.printGameIntroduction();
-//    restart.gamePlayCommands();
-  }
 
   /**
    * Ends the game completely
@@ -519,6 +531,9 @@ public class Building {
 
   public void setName(String name) {
     player.setName(name);
+  }
+  public String getName(){
+   return player.getName();
   }
 
   public HashMap<String, Room> getBuilding() {
