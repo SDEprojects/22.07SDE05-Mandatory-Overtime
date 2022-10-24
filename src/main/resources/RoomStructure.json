@@ -164,7 +164,7 @@
       "elevator",
       "kitchen"
     ],
-    "items": "keyfob",
+    "items": null,
     "NPC": "roy",
     "preReq": null,
     "fail": false,
