@@ -2,9 +2,8 @@ package com.mandatory_overtime.model.exception;
 
 public class IllegalMoveException extends IllegalArgumentException{
 
-  public IllegalMoveException(){}
   public IllegalMoveException(String noun){
-    System.out.println("Sorry, you can't go to the " + noun + " from your current location.");
+    System.out.println("Sorry, you can't go " + noun.toUpperCase() + " from your current location.");
   }
 }
 

@@ -67,6 +67,17 @@ public class Npc {
   @SerializedName("NpcName")
   private String name;
 
+  public String getDialogueQuestDone() {
+    return dialogueQuestDone;
+  }
+
+  public void setDialogueQuestDone(String dialogueQuestDone) {
+    this.dialogueQuestDone = dialogueQuestDone;
+  }
+
+  @SerializedName("dialogueQuestDone")
+  private String dialogueQuestDone;
+
   public String getPrereq() {
     return prereq;
   }

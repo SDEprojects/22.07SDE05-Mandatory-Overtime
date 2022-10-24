@@ -2,17 +2,18 @@
   {
     "item": "laptop",
     "location": "office",
-    "purpose": "Can't leave the office without your laptop",
+    "purpose": "Phew, I couldn't leave the office without my laptop",
     "npc": false,
     "preReq": null,
     "challenge": true,
-    "challenge prompt" : "What is wrong with this line of code?",
-    "challenge answer": "nothing",
-    "acquired": false
+    "challenge prompt" : "Which of these types of candy is the most popular in the USA during Halloween? (enter a letter)\na. M&Ms \nb. Milk Duds \nc. Reese’s \nd. Snickers",
+    "challenge answer": "c",
+    "acquired": false,
+    "sound1" : "Inventory_Stash_Item.wav"
   },
   {
     "item": "mask",
-    "location": "party floor",
+    "location": "table",
     "purpose": "A disguise! It would be hard for someone to recognize you with this.",
     "npc": false,
     "preReq": null,
@@ -23,7 +24,7 @@
   },
   {
     "item": "sweater",
-    "location": "dev room",
+    "location": "dev floor",
     "purpose": "A sweater, perfect to survive those ice-cold rooms!",
     "npc": false,
     "preReq": null,
@@ -67,7 +68,7 @@
   },
   {
     "item": "raisinets",
-    "location": "lobby",
+    "location": "vending machine",
     "purpose": "Now you can get Roy off your back.",
     "npc": false,
     "preReq": "wallet",
@@ -79,7 +80,7 @@
   {
     "item": "keyfob",
     "location": "break room",
-    "purpose": "Hmmmmm... I wander that this key could possibly go to?",
+    "purpose": "It's the keyfob for the IT closet.",
     "npc": true,
     "preReq": null,
     "challenge": false,
@@ -90,7 +91,7 @@
   {
     "item": "badge",
     "location": "it closet",
-    "purpose": "Finally! There you are! Better hurry to my phone!",
+    "purpose": "Finally! You need your badge for the conference room. Better hurry to my phone!",
     "npc": false,
     "preReq": null,
     "challenge": false,
@@ -101,7 +102,7 @@
   {
     "item": "phone",
     "location": "conference room",
-    "purpose": "Good thing I got to my phone before <manager> called, I better turn it off and get out of here!",
+    "purpose": "Can't leave without grabbing my phone and turning it off. You can't miss a call-in if you don't get a call-in.",
     "npc": false,
     "preReq": null,
     "challenge": true,

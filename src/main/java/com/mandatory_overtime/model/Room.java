@@ -16,6 +16,150 @@ public class Room {
   private String preReq;
   @SerializedName("fail")
   private Boolean failCondition;
+  @SerializedName("description")
+  private String description;
+  @SerializedName("sound1")
+  private String audio1;
+  @SerializedName("sound2")
+  private String audio2;
+  @SerializedName("sound3")
+  private String audio3;
+  @SerializedName("footstepSound")
+  private String footstepAudio;
+  @SerializedName("inventorySound")
+  private String inventoryAudio;
+  @SerializedName("backgroundMusic")
+  private Boolean backgroundMusic;
+  @SerializedName("typingSound")
+  private String typingAudio;
+  @SerializedName("drawerOpenSound")
+  private String drawerOpenAudio;
+  @SerializedName("accessGrantedSound")
+  private String accessGrantedAudio;
+  @SerializedName("accessDeniedSound")
+  private String accessDeniedAudio;
+  @SerializedName("doorOpenSound")
+  private String doorOpenAudio;
+  @SerializedName("vendingMachineSound")
+  private String vendingMachineAudio;
+  @SerializedName("phoneTypingSound")
+  private String phoneTypingAudio;
+  @SerializedName("phoneUnlockingSound")
+  private String phoneUnlockingAudio;
+
+  public String getPhoneTypingAudio() {
+    return phoneTypingAudio;
+  }
+  public void setPhoneTypingAudio(String phoneTypingAudio) {
+    this.phoneTypingAudio = phoneTypingAudio;
+  }
+  public String getPhoneUnlockingAudio() {
+    return phoneUnlockingAudio;
+  }
+  public void setPhoneUnlockingAudio(String phoneUnlockingAudio) {
+    this.phoneUnlockingAudio = phoneUnlockingAudio;
+  }
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public String getTypingAudio() {
+    return typingAudio;
+  }
+
+  public void setTypingAudio(String typingAudio) {
+    this.typingAudio = typingAudio;
+  }
+
+  public String getDrawerOpenAudio() {
+    return drawerOpenAudio;
+  }
+
+  public void setDrawerOpenAudio(String drawerOpenAudio) {
+    this.drawerOpenAudio = drawerOpenAudio;
+  }
+
+  public String getAccessGrantedAudio() {
+    return accessGrantedAudio;
+  }
+
+  public void setAccessGrantedAudio(String accessGrantedAudio) {
+    this.accessGrantedAudio = accessGrantedAudio;
+  }
+  public String getAccessDeniedAudio() {
+    return accessDeniedAudio;
+  }
+
+  public void setAccessDeniedAudio(String accessDeniedAudio) {
+    this.accessDeniedAudio = accessDeniedAudio;
+  }
+  public String getDoorOpenAudio() {
+    return doorOpenAudio;
+  }
+
+  public void setDoorOpenAudio(String doorOpenAudio) {
+    this.doorOpenAudio = doorOpenAudio;
+  }
+
+  public String getVendingMachineAudio() {
+    return vendingMachineAudio;
+  }
+
+  public void setVendingMachineAudio(String vendingMachineAudio) {
+    this.vendingMachineAudio = vendingMachineAudio;
+  }
+
+  public String getFootstepAudio() {
+    return footstepAudio;
+  }
+
+  public void setFootstepAudio(String footstepAudio) {
+    this.footstepAudio = footstepAudio;
+  }
+
+  public String getInventoryAudio() {
+    return inventoryAudio;
+  }
+
+  public void setInventoryAudio(String inventoryAudio) {
+    this.inventoryAudio = inventoryAudio;
+  }
+
+  public Boolean getBackgroundMusic() {
+    return backgroundMusic;
+  }
+
+  public void setBackgroundMusic(Boolean backgroundMusic) {
+    this.backgroundMusic = backgroundMusic;
+  }
+  public String getAudio2() {
+    return audio2;
+  }
+
+  public void setAudio2(String audio2) {
+    this.audio2 = audio2;
+  }
+
+  public String getAudio3() {
+    return audio3;
+  }
+
+  public void setAudio3(String audio3) {
+    this.audio3 = audio3;
+  }
+
+  public String getAudio1() {
+    return audio1;
+  }
+
+  public void setAudio1(String audio) {
+    this.audio1 = audio;
+  }
+
 
   public String[] getDirections() {
     return directions;
