@@ -58,8 +58,11 @@ public class GamePlay {
    * Asks if user wants to start game from new or game from previous game
    * @throws IOException
    */
+
   public void startMenu() throws IOException, URISyntaxException {
-    System.out.println("\n-------------------------------------Game Menu---------------------------------------------\n"
+    System.out.println("========================================================================================================\n"
+        + "                                                  Menu\n"
+        + "========================================================================================================\n"
         + "Would you like to start a 'new game' or 'previous game'?\n"
         + "(Enter: 'new' or 'previous')\n");
     System.out.print(">");
@@ -87,7 +90,7 @@ public class GamePlay {
       //Ask if user wants to start new game, continue from previous game
 
       //Asks name and formats
-      System.out.println("What is your name");
+      System.out.println("\nWhat is your name");
       String name = inputParser.readLine().trim();
       String nameTemp;
       while (name.length() < 1) {
@@ -233,6 +236,8 @@ public class GamePlay {
           building.getRoomDescriptionInfo();
         } else if(verb.equals("music")){
           GameMusic.musicOnOff(noun);
+        } else if(verb.equals("volume")){
+          GameMusic.volumeUpDown(noun);
         } else {
           System.out.println(userView.incorrectInput());
         }

@@ -478,7 +478,7 @@ public class Building {
     String description = building.get(currentLocation).getDescription() == null ? ""
         : building.get(currentLocation).getDescription();
 
-    System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    System.out.printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
             + "========================================================================================================\n"
             + "Inventory: %1$s \t\t\t\t\t\t\tCurrent Room: %2$S\n"
             + "Items in Room: %3$s\n"
