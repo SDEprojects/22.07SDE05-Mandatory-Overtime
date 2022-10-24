@@ -3,11 +3,14 @@ package com.mandatory_overtime.model;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
+import com.mandatory_overtime.controller.GamePlay;
 import com.mandatory_overtime.model.exception.IllegalMoveException;
 import com.mandatory_overtime.model.exception.MissingRequirementException;
+import com.mandatory_overtime.model.exception.NoSavedGame;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -224,14 +227,22 @@ public class Building {
     File jar = new File(url.toURI());
     File f = new File(jar.getParent(), resourceFile);
 
-    //noinspection ConstantConditions
-    try (Reader reader = new InputStreamReader(new FileInputStream(f))) {
+    try {
+      if(f.exists()){
+        Reader reader = new InputStreamReader(new FileInputStream(f));
 
-      return gson.fromJson(reader, type);
+        return gson.fromJson(reader, type);
+      }else{
+        throw new NoSavedGame();
+      }
 
+    }catch (FileNotFoundException e){
     }
 
+    new GamePlay().startGameFromNew();
+    return null; //Start new game method here?
   }
+
 
 //  BUSINESS METHODS
 

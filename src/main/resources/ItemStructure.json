@@ -6,8 +6,8 @@
     "npc": false,
     "preReq": null,
     "challenge": true,
-    "challenge prompt" : "Which of these types of candy is the most popular in the USA during Halloween?\nM&Ms // Milk Duds // Reese’s // Snickers",
-    "challenge answer": "reese's",
+    "challenge prompt" : "Which of these types of candy is the most popular in the USA during Halloween?\na. M&Ms b. Milk Duds c. Reese’s d. Snickers",
+    "challenge answer": "a",
     "acquired": false,
     "sound1" : "Inventory_Stash_Item.wav"
   },
