@@ -3,6 +3,7 @@ package com.mandatory_overtime.model;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -33,8 +34,8 @@ static Building building;
 
   public static void playAudioFX(String soundFile) {
 
-    try (InputStream audio = Thread.currentThread().getContextClassLoader()
-        .getResourceAsStream(soundFile)) {
+    try {
+      URL audio = GameMusic.class.getResource("/" + soundFile);
 
       AudioInputStream audioInput = AudioSystem.getAudioInputStream(audio);
       clip = AudioSystem.getClip();
@@ -48,9 +49,8 @@ static Building building;
 
   public static void playAudioMusic(String soundFile) {
 
-    try (InputStream audio = Thread.currentThread().getContextClassLoader()
-        .getResourceAsStream(soundFile)) {
-
+    try {
+      URL audio = GameMusic.class.getResource("/" + soundFile);
       AudioInputStream audioInput = AudioSystem.getAudioInputStream(audio);
       clip = AudioSystem.getClip();
       clip.open(audioInput);
